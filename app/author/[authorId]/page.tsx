@@ -66,15 +66,120 @@ const authorData = {
   ],
 }
 
+// Mock data for Alice Munro
+const aliceMunroData = {
+  id: "alice-munro",
+  name: "Alice Munro",
+  bio: "Award-winning author with a passion for storytelling. Nobel Prize-winning Canadian author known for her masterful short stories that explore the complexities of human relationships.",
+  profileImage: "/images/author-alice-munro.jpeg",
+  joinedDate: "March 2021",
+  totalBooks: 2,
+  totalSales: 127,
+  averageRating: 4.9,
+  awards: 5,
+  socialLinks: {
+    website: "https://alicemunro.com",
+    instagram: "@alicemunro_author",
+    twitter: "@alicemunro",
+  },
+  books: [
+    {
+      id: 1,
+      title: "Classic Literature Collection",
+      genre: "Classics",
+      price: 599,
+      rating: 4.9,
+      reviews: 100,
+      sales: 80,
+      image: "/images/book-frankenstein.jpeg",
+      description: "A curated collection of the world's greatest literary works.",
+      publishedDate: "March 2023",
+      status: "Published",
+    },
+    {
+      id: 2,
+      title: "Contemporary Fiction",
+      genre: "Contemporary",
+      price: 449,
+      rating: 4.8,
+      reviews: 27,
+      sales: 47,
+      image: "/images/book-frankenstein.jpeg",
+      description: "Fresh perspectives on modern life and relationships.",
+      publishedDate: "June 2024",
+      status: "Published",
+    },
+  ],
+}
+
 export default function AuthorProfilePage({ params }: { params: { authorId: string } }) {
   const [shareUrl] = useState(typeof window !== "undefined" ? window.location.href : "")
+
+  // Select author data based on URL param
+  const currentAuthorData = params.authorId === "alice-munro" ? aliceMunroData : {
+    id: "kumar-nikhil",
+    name: "Kumar Nikhil",
+    bio: "Award-winning author specializing in contemporary fiction and motivational literature. Published 10+ bestselling books with over 50,000 copies sold worldwide.",
+    profileImage: "/placeholder.svg?height=200&width=200",
+    joinedDate: "January 2022",
+    totalBooks: 10,
+    totalSales: 52000,
+    averageRating: 4.8,
+    awards: 3,
+    socialLinks: {
+      website: "https://kumarnikhil.com",
+      instagram: "@kumarnikhil_author",
+      twitter: "@kumarnikhil",
+    },
+    books: [
+      {
+        id: 1,
+        title: "The Journey Within",
+        genre: "Self-Help",
+        price: 299,
+        rating: 4.9,
+        reviews: 245,
+        sales: 8500,
+        image: "/placeholder.svg?height=300&width=200",
+        description: "A transformative guide to self-discovery and personal growth.",
+        publishedDate: "March 2024",
+        status: "Published",
+      },
+      {
+        id: 2,
+        title: "Digital Dreams",
+        genre: "Fiction",
+        price: 399,
+        rating: 4.7,
+        reviews: 189,
+        sales: 6200,
+        image: "/placeholder.svg?height=300&width=200",
+        description: "A thrilling tale of technology and human connection.",
+        publishedDate: "January 2024",
+        status: "Published",
+      },
+      {
+        id: 3,
+        title: "Mindful Living",
+        genre: "Lifestyle",
+        price: 249,
+        rating: 4.8,
+        reviews: 156,
+        sales: 4800,
+        image: "/placeholder.svg?height=300&width=200",
+        description: "Practical tips for living a more mindful and balanced life.",
+        publishedDate: "November 2023",
+        status: "Published",
+      },
+    ],
+  }
 
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${authorData.name} - Author Profile`,
-          text: `Check out ${authorData.name}'s books on Book Lover`,
+          title: `${currentAuthorData.name} - Author Profile`,
+          text: `Check out ${currentAuthorData.name}'s books on Book Lover`,
           url: shareUrl,
         })
       } catch (error) {
@@ -96,8 +201,8 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
             <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-6 lg:space-y-0 lg:space-x-8">
               <div className="flex-shrink-0">
                 <Image
-                  src={authorData.profileImage || "/placeholder.svg"}
-                  alt={authorData.name}
+                  src={currentAuthorData.profileImage || "/placeholder.svg"}
+                  alt={currentAuthorData.name}
                   width={200}
                   height={200}
                   className="rounded-full border-4 border-red-200"
@@ -105,7 +210,7 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
               </div>
               <div className="flex-1 text-center lg:text-left">
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
-                  <h1 className="text-4xl font-bold text-black-800 mb-2 lg:mb-0">{authorData.name}</h1>
+                  <h1 className="text-4xl font-bold text-black-800 mb-2 lg:mb-0">{currentAuthorData.name}</h1>
                   <Button
                     onClick={handleShare}
                     variant="outline"
@@ -115,53 +220,53 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
                     Share Profile
                   </Button>
                 </div>
-                <p className="text-lg text-black-600 mb-6 leading-relaxed">{authorData.bio}</p>
+                <p className="text-lg text-black-600 mb-6 leading-relaxed">{currentAuthorData.bio}</p>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                   <div className="text-center p-4 bg-red-50 rounded-lg">
                     <BookOpen className="h-6 w-6 text-red-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-black-800">{authorData.totalBooks}</div>
+                    <div className="text-2xl font-bold text-black-800">{currentAuthorData.totalBooks}</div>
                     <div className="text-sm text-black-600">Books Published</div>
                   </div>
                   <div className="text-center p-4 bg-red-50 rounded-lg">
                     <Users className="h-6 w-6 text-red-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-black-800">{authorData.totalSales.toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-black-800">{currentAuthorData.totalSales.toLocaleString()}</div>
                     <div className="text-sm text-black-600">Copies Sold</div>
                   </div>
                   <div className="text-center p-4 bg-red-50 rounded-lg">
                     <Star className="h-6 w-6 text-red-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-black-800">{authorData.averageRating}</div>
+                    <div className="text-2xl font-bold text-black-800">{currentAuthorData.averageRating}</div>
                     <div className="text-sm text-black-600">Average Rating</div>
                   </div>
                   <div className="text-center p-4 bg-red-50 rounded-lg">
                     <Award className="h-6 w-6 text-red-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold text-black-800">{authorData.awards}</div>
+                    <div className="text-2xl font-bold text-black-800">{currentAuthorData.awards}</div>
                     <div className="text-sm text-black-600">Awards Won</div>
                   </div>
                 </div>
 
                 {/* Social Links */}
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                  {authorData.socialLinks.website && (
+                  {currentAuthorData.socialLinks.website && (
                     <Button
                       variant="outline"
                       size="sm"
                       className="border-red-300 text-red-600 bg-transparent"
-                      onClick={() => window.open(authorData.socialLinks.website, "_blank")}
+                      onClick={() => window.open(currentAuthorData.socialLinks.website, "_blank")}
                     >
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Website
                     </Button>
                   )}
-                  {authorData.socialLinks.instagram && (
+                  {currentAuthorData.socialLinks.instagram && (
                     <Button
                       variant="outline"
                       size="sm"
                       className="border-red-300 text-red-600 bg-transparent"
                       onClick={() =>
                         window.open(
-                          `https://instagram.com/${authorData.socialLinks.instagram.replace("@", "")}`,
+                          `https://instagram.com/${currentAuthorData.socialLinks.instagram.replace("@", "")}`,
                           "_blank",
                         )
                       }
@@ -169,13 +274,13 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
                       Instagram
                     </Button>
                   )}
-                  {authorData.socialLinks.twitter && (
+                  {currentAuthorData.socialLinks.twitter && (
                     <Button
                       variant="outline"
                       size="sm"
                       className="border-red-300 text-red-600 bg-transparent"
                       onClick={() =>
-                        window.open(`https://twitter.com/${authorData.socialLinks.twitter.replace("@", "")}`, "_blank")
+                        window.open(`https://twitter.com/${currentAuthorData.socialLinks.twitter.replace("@", "")}`, "_blank")
                       }
                     >
                       Twitter
@@ -192,12 +297,12 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-3xl font-bold text-black-800">Published Books</h2>
             <Badge variant="outline" className="border-red-500 text-red-700 bg-red-50">
-              {authorData.books.length} Books Available
+              {currentAuthorData.books.length} Books Available
             </Badge>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {authorData.books.map((book) => (
+            {currentAuthorData.books.map((book) => (
               <Card key={book.id} className="border-red-200 hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
@@ -269,7 +374,7 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
         {/* Contact Author Section */}
         <Card className="border-red-200 bg-gradient-to-r from-red-600 to-black-800 text-white">
           <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Connect with {authorData.name}</h3>
+            <h3 className="text-2xl font-bold mb-4">Connect with {currentAuthorData.name}</h3>
             <p className="text-red-100 mb-6 max-w-2xl mx-auto">
               Interested in collaborating or have questions about the books? Get in touch!
             </p>
