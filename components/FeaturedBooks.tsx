@@ -14,7 +14,7 @@ const featuredBooks = [
     title: "Frankenstein",
     author: "Mary Wollstonecraft Shelley",
     price: 599,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/frankenstein.png",
     genre: "Classic Horror",
   },
   {
@@ -22,7 +22,7 @@ const featuredBooks = [
     title: "The Modern Prometheus",
     author: "Mary Shelley",
     price: 449,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/modernprometheus.png",
     genre: "Gothic Fiction",
   },
   {
@@ -30,7 +30,7 @@ const featuredBooks = [
     title: "Classic Literature Collection",
     author: "Various Authors",
     price: 529,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/classicliterature.png",
     genre: "Classics",
   },
   {
@@ -38,7 +38,7 @@ const featuredBooks = [
     title: "Horror Masterpieces",
     author: "Classic Authors",
     price: 649,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/horror.png",
     genre: "Horror",
   },
   {
@@ -46,7 +46,7 @@ const featuredBooks = [
     title: "Gothic Tales",
     author: "Victorian Authors",
     price: 499,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/gothictales.png",
     genre: "Gothic",
   },
   {
@@ -54,7 +54,7 @@ const featuredBooks = [
     title: "Literary Classics",
     author: "Renowned Writers",
     price: 579,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/literacyclassic.png",
     genre: "Literature",
   },
 ]
@@ -106,7 +106,7 @@ export default function FeaturedBooks() {
                     alt={book.title}
                     width={200}
                     height={300}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-64 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-2 left-2">
                     <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -151,7 +151,7 @@ export default function FeaturedBooks() {
                           alt={book.title}
                           width={200}
                           height={300}
-                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-64 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute top-2 left-2">
                           <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">

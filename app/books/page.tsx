@@ -16,7 +16,7 @@ const books = [
     title: "Frankenstein",
     author: "Mary Wollstonecraft Shelley",
     price: 599,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/frankenstein.png",
     genre: "Classic Horror",
     description: "A gripping tale of science, ambition, and the consequences of playing God.",
   },
@@ -25,7 +25,7 @@ const books = [
     title: "The Modern Prometheus",
     author: "Mary Shelley",
     price: 449,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/modernprometheus.png",
     genre: "Gothic Fiction",
     description: "Explore the dark themes of creation and responsibility in this timeless classic.",
   },
@@ -34,7 +34,7 @@ const books = [
     title: "Classic Literature Collection",
     author: "Various Authors",
     price: 529,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/classicliterature.png",
     genre: "Classics",
     description: "A curated collection of the world's greatest literary works.",
   },
@@ -43,7 +43,7 @@ const books = [
     title: "Horror Masterpieces",
     author: "Classic Authors",
     price: 649,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/horror.png",
     genre: "Horror",
     description: "The finest collection of horror stories from renowned authors.",
   },
@@ -52,7 +52,7 @@ const books = [
     title: "Gothic Tales",
     author: "Victorian Authors",
     price: 499,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/gothictales.png",
     genre: "Gothic",
     description: "Dark and mysterious tales from the Victorian era.",
   },
@@ -61,7 +61,7 @@ const books = [
     title: "Literary Classics",
     author: "Renowned Writers",
     price: 579,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/literacyclassic.png",
     genre: "Literature",
     description: "Essential reading from the world's most celebrated authors.",
   },
@@ -70,7 +70,7 @@ const books = [
     title: "Science Fiction Anthology",
     author: "Modern Authors",
     price: 699,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/scifi.png",
     genre: "Sci-Fi",
     description: "Mind-bending stories that explore the future of humanity.",
   },
@@ -79,7 +79,7 @@ const books = [
     title: "Contemporary Fiction",
     author: "New Voices",
     price: 399,
-    image: "/images/book-frankenstein.jpeg",
+    image: "/images/contemporary.png",
     genre: "Contemporary",
     description: "Fresh perspectives on modern life and relationships.",
   },
@@ -245,7 +245,7 @@ export default function BooksPage() {
                         alt={book.title}
                         width={200}
                         height={300}
-                        className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-48 object-contain bg-white hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 left-2">
                         <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -326,7 +326,7 @@ export default function BooksPage() {
                         alt={book.title}
                         width={200}
                         height={300}
-                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-64 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 left-2">
                         <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -365,7 +365,7 @@ export default function BooksPage() {
                         alt={book.title}
                         width={120}
                         height={180}
-                        className="rounded-lg object-cover"
+                        className="rounded-lg object-contain bg-white"
                       />
                       <div className="flex-1">
                         <div className="flex justify-between items-start mb-2">
