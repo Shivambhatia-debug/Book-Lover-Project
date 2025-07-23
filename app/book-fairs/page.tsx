@@ -12,7 +12,7 @@ const upcomingFairs = [
     location: "Central Convention Center, Downtown",
     address: "123 Convention Ave, City Center",
     attendees: "5000+",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/fair1.png",
     description:
       "Join us for three days of literary celebration with author readings, book signings, and workshops. This premier event brings together readers, writers, and industry professionals.",
     highlights: [
@@ -32,7 +32,7 @@ const upcomingFairs = [
     location: "Downtown Public Library",
     address: "456 Library St, Arts District",
     attendees: "2000+",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/fair2.png",
     description:
       "Discover emerging voices in literature and meet independent authors from around the region. A perfect venue for discovering your next favorite book.",
     highlights: [
@@ -52,7 +52,7 @@ const upcomingFairs = [
     location: "Riverside Park Pavilion",
     address: "789 Park Way, Riverside",
     attendees: "8000+",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/fair3.png",
     description:
       "The largest book fair of the year featuring bestselling authors and exclusive book launches. Don't miss this spectacular literary event.",
     highlights: [
@@ -74,7 +74,7 @@ const pastFairs = [
     date: "December 10-12, 2023",
     location: "Grand Hotel Ballroom",
     attendees: "3000+",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/past1.png",
     description: "A successful winter celebration of literature with record attendance.",
     status: "completed",
   },
@@ -84,7 +84,7 @@ const pastFairs = [
     date: "October 15-16, 2023",
     location: "University Campus",
     attendees: "4500+",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/past2.png",
     description: "Academic and literary communities came together for an inspiring event.",
     status: "completed",
   },
@@ -200,12 +200,12 @@ export default function BookFairsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {pastFairs.map((fair) => (
               <Card key={fair.id} className="border-burgundy-200 hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
+                <div className="relative h-72 bg-white flex items-center justify-center">
                   <Image
                     src={fair.image || "/placeholder.svg"}
                     alt={fair.name}
                     fill
-                    className="object-cover rounded-t-lg"
+                    className="object-contain"
                   />
                   <div className="absolute top-4 right-4">
                     <Badge variant="secondary" className="bg-gray-500 text-white">

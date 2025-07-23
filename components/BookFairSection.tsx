@@ -11,7 +11,7 @@ const upcomingFairs = [
     date: "March 15-17, 2024",
     location: "Central Convention Center",
     attendees: "5000+",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/fair1.png",
     description: "Join us for three days of literary celebration with author readings, book signings, and workshops.",
   },
   {
@@ -20,7 +20,7 @@ const upcomingFairs = [
     date: "April 22-23, 2024",
     location: "Downtown Library",
     attendees: "2000+",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/fair2.png",
     description: "Discover emerging voices in literature and meet independent authors from around the region.",
   },
   {
@@ -29,7 +29,7 @@ const upcomingFairs = [
     date: "June 8-10, 2024",
     location: "Riverside Park Pavilion",
     attendees: "8000+",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/images/fair3.png",
     description: "The largest book fair of the year featuring bestselling authors and exclusive book launches.",
   },
 ]

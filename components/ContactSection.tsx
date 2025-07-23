@@ -132,13 +132,19 @@ export default function ContactSection() {
                     <Send className="h-5 w-5 mr-2" />
                     Start Publishing Now
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full border-white text-white hover:bg-white hover:text-red-600 bg-transparent"
+                  <a
+                    href="/brochure.pdf"
+                    download
+                    className="w-full"
                   >
-                    Download Brochure
-                  </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full border-white text-white hover:bg-white hover:text-red-600 bg-transparent"
+                    >
+                      Download Brochure
+                    </Button>
+                  </a>
                 </div>
               </CardContent>
             </Card>

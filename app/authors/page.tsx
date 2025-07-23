@@ -10,84 +10,84 @@ const authors = [
     id: "alice-munro",
     name: "Alice Munro",
     bio: "Nobel Prize-winning Canadian author known for her masterful short stories. Her work explores the complexities of human relationships with profound insight and literary excellence.",
-    image: "/images/author-alice-munro.jpeg",
+    image: "/images/alice.png",
     books: 14,
     awards: 12,
     genres: ["Short Stories", "Literary Fiction"],
     featuredBook: {
       title: "Dear Life",
       price: 599,
-      image: "/images/book-frankenstein.jpeg",
+      image: "/images/dearlife.png",
     },
   },
   {
     id: "literary-author-2",
     name: "Margaret Atwood",
     bio: "Acclaimed Canadian poet, novelist, and literary critic. Her dystopian fiction and speculative works have earned international recognition and numerous awards.",
-    image: "/images/author-alice-munro.jpeg",
+    image: "/images/margaret.png",
     books: 18,
     awards: 8,
     genres: ["Dystopian Fiction", "Poetry"],
     featuredBook: {
       title: "The Handmaid's Tale",
       price: 649,
-      image: "/images/book-frankenstein.jpeg",
+      image: "/images/handmaid.png",
     },
   },
   {
     id: "literary-author-3",
     name: "Toni Morrison",
     bio: "Nobel Prize-winning American novelist known for her powerful exploration of African American experience. Her works are celebrated for their lyrical prose and profound themes.",
-    image: "/images/author-alice-munro.jpeg",
+    image: "/images/toni.png",
     books: 11,
     awards: 15,
     genres: ["Literary Fiction", "Historical Fiction"],
     featuredBook: {
       title: "Beloved",
       price: 729,
-      image: "/images/book-frankenstein.jpeg",
+      image: "/images/beloved.png",
     },
   },
   {
     id: "literary-author-4",
     name: "Chimamanda Ngozi Adichie",
     bio: "Nigerian author whose works explore themes of identity, feminism, and post-colonialism. Her storytelling bridges cultures and speaks to universal human experiences.",
-    image: "/images/author-alice-munro.jpeg",
+    image: "/images/ngozi.png",
     books: 6,
     awards: 9,
     genres: ["Contemporary Fiction", "Essays"],
     featuredBook: {
       title: "Americanah",
       price: 579,
-      image: "/images/book-frankenstein.jpeg",
+      image: "/images/americanah.png",
     },
   },
   {
     id: "literary-author-5",
     name: "Haruki Murakami",
     bio: "Japanese author known for his surreal and magical realist works. His novels blend reality with fantasy, creating unique literary experiences that captivate readers worldwide.",
-    image: "/images/author-alice-munro.jpeg",
+    image: "/images/haruki.png",
     books: 16,
     awards: 7,
     genres: ["Magical Realism", "Contemporary Fiction"],
     featuredBook: {
       title: "Norwegian Wood",
       price: 549,
-      image: "/images/book-frankenstein.jpeg",
+      image: "/images/norwegian.png",
     },
   },
   {
     id: "literary-author-6",
     name: "Zadie Smith",
     bio: "British author celebrated for her witty and insightful novels about multicultural Britain. Her work explores themes of identity, race, and belonging with humor and depth.",
-    image: "/images/author-alice-munro.jpeg",
+    image: "/images/zadie.png",
     books: 8,
     awards: 6,
     genres: ["Contemporary Fiction", "Social Commentary"],
     featuredBook: {
       title: "White Teeth",
       price: 629,
-      image: "/images/book-frankenstein.jpeg",
+      image: "/images/whiteteeth.png",
     },
   },
 ]
@@ -119,7 +119,7 @@ export default function AuthorsPage() {
                     alt={author.name}
                     width={120}
                     height={120}
-                    className="rounded-full mx-auto mb-4 border-4 border-red-200 object-cover"
+                    className="mx-auto mb-4 border-4 border-red-200 object-cover aspect-[3/4] rounded-full md:rounded-[60px] md:w-[120px] md:h-[160px] w-[90px] h-[120px]"
                   />
                   <h3 className="text-2xl font-bold text-black-800 mb-2">{author.name}</h3>
                   <div className="flex flex-wrap justify-center gap-2 mb-3">
