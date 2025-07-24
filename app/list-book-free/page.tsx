@@ -114,29 +114,28 @@ export default function ListBookFreePage() {
   }
 
   return (
-    <div className="min-h-screen bg-cream-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-cream-50 py-6 sm:py-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-black-800 mb-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-black-800 mb-3 sm:mb-6" style={{textShadow: '0 2px 8px #fff, 0 1px 2px #fff'}}>
             📚 List Your Book for <span className="text-red-600">FREE!</span>
           </h1>
-          <p className="text-xl text-black-600 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of successful authors on our platform. Get your book discovered by readers worldwide at
-            absolutely no cost.
+          <p className="text-base sm:text-xl text-black-600 max-w-xl sm:max-w-3xl mx-auto leading-relaxed">
+            Join thousands of successful authors on our platform. Get your book discovered by readers worldwide at absolutely no cost.
           </p>
         </div>
 
         {/* Benefits Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 md:mb-16">
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon
             return (
               <Card key={index} className="border-red-200 text-center hover:shadow-lg transition-shadow bg-white">
-                <CardContent className="p-6">
-                  <IconComponent className="h-12 w-12 text-red-600 mx-auto mb-4" />
-                  <h3 className="font-bold text-lg text-black-800 mb-2">{benefit.title}</h3>
-                  <p className="text-black-600 text-sm">{benefit.description}</p>
+                <CardContent className="p-4 sm:p-6">
+                  <IconComponent className="h-8 sm:h-12 w-8 sm:w-12 text-red-600 mx-auto mb-2 sm:mb-4" />
+                  <h3 className="font-bold text-base sm:text-lg text-black-800 mb-1 sm:mb-2">{benefit.title}</h3>
+                  <p className="text-black-600 text-xs sm:text-sm">{benefit.description}</p>
                 </CardContent>
               </Card>
             )
@@ -146,17 +145,17 @@ export default function ListBookFreePage() {
         {/* Form Section */}
         <Card className="border-red-200 shadow-2xl bg-white">
           <CardHeader className="bg-gradient-to-r from-red-600 to-black-800 text-white rounded-t-lg">
-            <CardTitle className="text-3xl text-center">Submit Your Book Details</CardTitle>
-            <p className="text-center text-red-100 text-lg">Fill in the information below to get started</p>
+            <CardTitle className="text-lg sm:text-3xl text-center">Submit Your Book Details</CardTitle>
+            <p className="text-center text-xs sm:text-red-100 sm:text-lg">Fill in the information below to get started</p>
           </CardHeader>
-          <CardContent className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-8">
+          <CardContent className="p-4 sm:p-8">
+            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               {/* Book Information */}
               <div>
-                <h3 className="text-2xl font-bold text-black-800 mb-6 border-b border-red-200 pb-2">
+                <h3 className="text-lg sm:text-2xl font-bold text-black-800 mb-3 sm:mb-6 border-b border-red-200 pb-1 sm:pb-2">
                   📖 Book Information
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <Label htmlFor="title" className="text-black-700 font-medium">
                       Book Title *
