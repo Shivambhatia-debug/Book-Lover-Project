@@ -3,6 +3,7 @@ import { Calendar, MapPin, Users, Ticket, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 const upcomingFairs = [
   {
@@ -178,7 +179,9 @@ export default function BookFairsPage() {
                       </div>
 
                       <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-burgundy-100">
-                        <Button className="bg-burgundy-600 hover:bg-burgundy-700 flex-1">Register Now</Button>
+                        <Button className="bg-burgundy-600 hover:bg-burgundy-700 flex-1 w-full sm:w-auto" asChild>
+                          <Link href="/publishing-packages">Register Now</Link>
+                        </Button>
                         <Button
                           variant="outline"
                           className="border-burgundy-300 text-burgundy-600 hover:bg-burgundy-600 hover:text-white flex-1 bg-transparent"
