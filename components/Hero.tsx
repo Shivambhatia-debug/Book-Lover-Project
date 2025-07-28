@@ -8,14 +8,14 @@ import { Button } from "@/components/ui/button"
 
 const heroImages = [
   {
-    src: "/images/open-book-golden.jpeg",
+    src: "/images/blc1.jpg",  
     alt: "Open book with golden lighting",
     title: "Publish Your Story",
     subtitle: "Turn your manuscript into a published book with our expert guidance",
     theme: "warm",
   },
   {
-    src: "/images/book-candlelight.jpeg",
+    src: "/images/bl4.jpg",
     alt: "Book illuminated by candlelight",
     title: "Choose Your Publishing Package",
     subtitle: "From ₹1.5 Lakh to ₹3 Lakh - Complete publishing solutions for every author",
@@ -23,14 +23,14 @@ const heroImages = [
     theme: "elegant",
   },
   {
-    src: "/images/book-heart.jpeg",
+    src: "/images/blc6.jpg",
     alt: "Book pages forming heart shape",
     title: "Discover Amazing Books",
     subtitle: "Explore our curated collection of books from talented authors",
     theme: "romantic",
   },
   {
-    src: "/images/vintage-books-stack.jpeg",
+      src: "/images/blc7.jpg",
     alt: "Stack of vintage books",
     title: "Join Our Book Fairs",
     subtitle: "Meet authors, discover new books, and be part of our literary community",

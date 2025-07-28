@@ -7,7 +7,7 @@ const packages = [
     price: "₹5,000 + GST",
     description: "This package is for additional help authors are looking for.",
     freeBenefit: null,
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "❌" },
       { label: "Publishing Consultant", value: "✅" },
@@ -24,7 +24,7 @@ const packages = [
     name: "Welcome Booklover",
     price: "₹8,999 + GST",
     freeBenefit: null,
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },
@@ -42,7 +42,7 @@ const packages = [
     name: "Booklover Elite",
     price: "₹14,999 + GST",
     freeBenefit: "Free Benefit Worth: ₹5,900/-",
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },
@@ -60,7 +60,7 @@ const packages = [
     name: "Booklover Big Book Box",
     price: "₹20,999 + GST",
     freeBenefit: "Free Benefit Worth: ₹9,440/-",
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },
@@ -78,7 +78,7 @@ const packages = [
     name: "Elite++",
     price: "₹33,999 + GST",
     freeBenefit: "Free Benefit Worth: ₹12,980/-",
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },
@@ -96,7 +96,7 @@ const packages = [
     name: "Booklover Silver",
     price: "₹51,999 + GST",
     freeBenefit: "Free Benefit Worth: ₹17,700/-",
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },
@@ -114,7 +114,7 @@ const packages = [
     name: "Booklover Display Gold",
     price: "₹91,000 + GST",
     freeBenefit: "Free Benefit Worth: ₹29,500/-",
-    image: "/images/placeholder.jpg",
+    image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },
@@ -132,7 +132,7 @@ const packages = [
     name: "Booklover Platinum",
     price: "₹1,51,000 + GST",
     freeBenefit: "Free Benefit Worth: ₹29,500/-",
-    image: "/images/placeholder.jpg",
+      image: "/images/ee1.jpg",
     features: [
       { label: "Copyright / ISBN / Barcode", value: "✅" },
       { label: "Publishing Consultant", value: "✅" },

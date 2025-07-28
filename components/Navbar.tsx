@@ -43,32 +43,11 @@ export default function Navbar() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
             <CartDrawer className="text-black-800" />
-            <Link href="/author-dashboard">
-              <Button
-                variant="outline"
-                size="sm"
-                className="border-red-500 text-red-600 hover:bg-red-600 hover:text-white bg-white font-semibold"
-              >
-                Author Dashboard
-              </Button>
-            </Link>
-            <Link href="/login">
-              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white font-semibold">
-                <User className="h-4 w-4 mr-2" />
-                Login
-              </Button>
-            </Link>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <CartDrawer className="text-black-800" />
-            <Link href="/login">
-              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white font-semibold">
-                <User className="h-4 w-4 mr-1" />
-                Login
-              </Button>
-            </Link>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-black-800">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -97,20 +76,6 @@ export default function Navbar() {
               <Link href="/about" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
                 About Us
               </Link>
-              <div className="border-t border-gray-200 pt-4 pb-3">
-                <div className="flex flex-col space-y-3 px-3">
-                  <Link href="/author-dashboard">
-                    <Button variant="outline" size="sm" className="w-full border-red-500 text-red-600 bg-white font-semibold hover:bg-red-600 hover:text-white">
-                      Dashboard
-                    </Button>
-                  </Link>
-                  <Link href="/login">
-                    <Button size="sm" className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold">
-                      Login
-                    </Button>
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
         )}

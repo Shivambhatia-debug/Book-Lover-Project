@@ -29,7 +29,7 @@ export default function ContactSection() {
                     <p className="text-xs sm:text-base text-black-600">Quick responses, instant support</p>
                     <Button
                       className="mt-1 sm:mt-2 bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto"
-                      onClick={() => window.open("https://wa.me/919876543210", "_blank")}
+                      onClick={() => window.open("https://wa.me/9142994429", "_blank")}
                     >
                       Chat on WhatsApp
                     </Button>
@@ -47,7 +47,7 @@ export default function ContactSection() {
                   <div>
                     <h3 className="text-base sm:text-lg font-semibold text-black-800">Phone</h3>
                     <p className="text-xs sm:text-base text-black-600">Speak directly with our experts</p>
-                    <p className="text-base sm:text-xl font-bold text-blue-600 mt-1">+91 98765 43210</p>
+                    <p className="text-base sm:text-xl font-bold text-blue-600 mt-1">+91 9142994429</p>
                   </div>
                 </div>
               </CardContent>
@@ -62,7 +62,7 @@ export default function ContactSection() {
                   <div>
                     <h3 className="text-base sm:text-lg font-semibold text-black-800">Email</h3>
                     <p className="text-xs sm:text-base text-black-600">Detailed queries and proposals</p>
-                    <p className="text-xs sm:text-lg font-semibold text-red-600 mt-1">info@booklover.com</p>
+                    <p className="text-xs sm:text-lg font-semibold text-red-600 mt-1">info@bookloverpublishinghouse.com</p>
                   </div>
                 </div>
               </CardContent>
@@ -104,9 +104,9 @@ export default function ContactSection() {
                   <div>
                     <h4 className="font-semibold text-black-800 text-sm sm:text-base">Head Office</h4>
                     <p className="text-xs sm:text-base text-black-600">
-                      123 Publishing Street,
+                      {/* 123 Publishing Street,
                       <br />
-                      Literary District,
+                      Literary District, */}
                       <br />
                       Mumbai, Maharashtra 400001
                       <br />

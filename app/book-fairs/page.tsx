@@ -1,19 +1,22 @@
+"use client"
+
 import Image from "next/image"
 import { Calendar, MapPin, Users, Ticket, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { useState, useEffect } from "react"
 
 const upcomingFairs = [
   {
     id: 1,
-    name: "Literary Spring Festival",
-    date: "March 15-17, 2024",
-    location: "Central Convention Center, Downtown",
-    address: "123 Convention Ave, City Center",
+    name: "Mumbai Book Fare Festival",
+    date: "Upcoming",
+    location: "Upcoming",
+    address: "Upcoming",
     attendees: "5000+",
-    image: "/images/fair1.png",
+    image: "/images/blc7.jpg",
     description:
       "Join us for three days of literary celebration with author readings, book signings, and workshops. This premier event brings together readers, writers, and industry professionals.",
     highlights: [
@@ -28,12 +31,12 @@ const upcomingFairs = [
   },
   {
     id: 2,
-    name: "Indie Authors Showcase",
-    date: "April 22-23, 2024",
-    location: "Downtown Public Library",
-    address: "456 Library St, Arts District",
+    name: "Delhi Book Fare Festival",
+    date: "Upcoming",
+    location: "Upcoming",
+    address: "Upcoming",
     attendees: "2000+",
-    image: "/images/fair2.png",
+    image: "/images/blc9.jpg",
     description:
       "Discover emerging voices in literature and meet independent authors from around the region. A perfect venue for discovering your next favorite book.",
     highlights: [
@@ -43,17 +46,17 @@ const upcomingFairs = [
       "Book launch events",
       "Reader meet & greets",
     ],
-    ticketPrice: "$15",
+    ticketPrice: "updated soon",
     status: "upcoming",
   },
   {
     id: 3,
-    name: "Summer Reading Expo",
-    date: "June 8-10, 2024",
-    location: "Riverside Park Pavilion",
-    address: "789 Park Way, Riverside",
+    name: "Pune Book Fare Festival",
+    date: "Upcoming",
+    location: "Upcoming",
+    address: "Upcoming",
     attendees: "8000+",
-    image: "/images/fair3.png",
+    image: "/images/bl4.jpg",
     description:
       "The largest book fair of the year featuring bestselling authors and exclusive book launches. Don't miss this spectacular literary event.",
     highlights: [
@@ -63,7 +66,7 @@ const upcomingFairs = [
       "Food trucks and entertainment",
       "Special celebrity guest speakers",
     ],
-    ticketPrice: "$25",
+    ticketPrice: "updated soon",
     status: "upcoming",
   },
 ]
@@ -107,7 +110,7 @@ export default function BookFairsPage() {
         {/* Upcoming Events */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-burgundy-900">Upcoming Events</h2>
+            <h2 className="text-3xl font-bold text-burgundy-900"> Events</h2>
             <Badge variant="outline" className="border-amber-500 text-amber-700 bg-amber-50">
               {upcomingFairs.length} Events Scheduled
             </Badge>
@@ -198,45 +201,10 @@ export default function BookFairsPage() {
         </div>
 
         {/* Past Events */}
+        {/* Replace past events grid with a slideshow */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-burgundy-900 mb-8">Past Events</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {pastFairs.map((fair) => (
-              <Card key={fair.id} className="border-burgundy-200 hover:shadow-lg transition-shadow">
-                <div className="relative h-72 bg-white flex items-center justify-center">
-                  <Image
-                    src={fair.image || "/placeholder.svg"}
-                    alt={fair.name}
-                    fill
-                    className="object-contain"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge variant="secondary" className="bg-gray-500 text-white">
-                      Completed
-                    </Badge>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-burgundy-900 mb-2">{fair.name}</h3>
-                  <p className="text-burgundy-700 mb-4">{fair.description}</p>
-                  <div className="space-y-2 text-sm text-burgundy-600">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-2 text-amber-600" />
-                      {fair.date}
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-2 text-amber-600" />
-                      {fair.location}
-                    </div>
-                    <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-2 text-amber-600" />
-                      {fair.attendees} Attendees
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <h2 className="text-3xl font-bold text-burgundy-900 mb-8">Past Events Glimpse</h2>
+          <PastEventsSlideshow />
         </div>
 
         {/* Newsletter Signup */}
@@ -255,6 +223,58 @@ export default function BookFairsPage() {
             <Button className="bg-amber-600 hover:bg-amber-700 px-8">Subscribe</Button>
           </div>
         </div>
+      </div>
+    </div>
+  )
+}
+
+const pastEventImages = [
+  "/images/pe1.jpg",
+  "/images/pe2.jpg",
+  "/images/pe3.jpg",
+  "/images/pe4.jpg",
+  "/images/pe5.jpg",
+  "/images/pe7.jpg",
+  "/images/pe8.jpg",
+  "/images/pe10.jpg",
+]
+
+function PastEventsSlideshow() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % pastEventImages.length)
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="relative w-full max-w-3xl mx-auto h-80 sm:h-96 rounded-xl overflow-hidden shadow-lg">
+      {pastEventImages.map((src, idx) => (
+        <div
+          key={src}
+          className={`absolute inset-0 transition-opacity duration-1000 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+        >
+          <Image
+            src={src}
+            alt={`Past Event ${idx + 1}`}
+            fill
+            className="object-cover w-full h-full"
+            priority={idx === 0}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+        </div>
+      ))}
+      {/* Slide indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {pastEventImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === current ? 'bg-amber-500 scale-110' : 'bg-white/60 hover:bg-white/80'}`}
+          />
+        ))}
       </div>
     </div>
   )

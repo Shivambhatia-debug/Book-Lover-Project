@@ -92,15 +92,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-amber-400 mr-3" />
-                <span className="text-cream-200">info@booklover.com</span>
+                <span className="text-cream-200">info@bookloverpublishinghouse.com</span>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 text-amber-400 mr-3" />
-                <span className="text-cream-200">+1 (555) 123-4567</span>
+                <span className="text-cream-200">+91 9142994429 </span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 text-amber-400 mr-3" />
-                <span className="text-cream-200">123 Literary Lane, Book City, BC 12345</span>
+                <span className="text-cream-200">Mumbai, Maharashtra, India</span>
               </div>
             </div>
           </div>
