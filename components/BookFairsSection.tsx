@@ -6,6 +6,7 @@ import { Calendar, MapPin, Users, ArrowRight, Globe, Flag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 const nationalFairs = [
   {
@@ -68,14 +69,7 @@ const internationalFairs = [
 ]
 
 export default function BookFairsSection() {
-  const [showPackages, setShowPackages] = useState(false)
-  const [selectedType, setSelectedType] = useState<"national" | "international">("national")
-
-  const openPackagesModal = (type: "national" | "international") => {
-    setSelectedType(type)
-    setShowPackages(true)
-  }
-
+  // Remove showPackages and selectedType state and modal logic
   return (
     <>
       <section className="py-10 md:py-16 bg-gradient-to-br from-black-800 to-red-900 text-white">
@@ -137,12 +131,14 @@ export default function BookFairsSection() {
 
               <div className="text-center mt-4 sm:mt-8">
                 <Button
-                  onClick={() => openPackagesModal("national")}
+                  asChild
                   size="lg"
                   className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
                 >
-                  Register Now - National
-                  <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />
+                  <Link href="/publishing-packages">
+                    Register Now - National
+                    <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -196,104 +192,20 @@ export default function BookFairsSection() {
 
               <div className="text-center mt-4 sm:mt-8">
                 <Button
-                  onClick={() => openPackagesModal("international")}
+                  asChild
                   size="lg"
                   className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
                 >
-                  Register Now - International
-                  <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />
+                  <Link href="/publishing-packages">
+                    Register Now - International
+                    <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />
+                  </Link>
                 </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Packages Modal */}
-      {showPackages && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <Card className="max-w-4xl w-full max-h-[90vh] overflow-y-auto border-red-500 border-2">
-            <CardHeader className="bg-gradient-to-r from-red-600 to-black-800 text-white">
-              <div className="flex justify-between items-center">
-                <CardTitle className="text-2xl">
-                  {selectedType === "national" ? "National" : "International"} Book Fair Packages
-                </CardTitle>
-                <Button
-                  onClick={() => setShowPackages(false)}
-                  variant="ghost"
-                  className="text-white hover:text-red-200"
-                >
-                  ✕
-                </Button>
-              </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="border-red-200">
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-xl text-black-800">Basic Package</CardTitle>
-                    <div className="text-3xl font-bold text-red-600">
-                      {selectedType === "national" ? "₹1.5 Lakh" : "₹3 Lakh"}
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm text-black-600">
-                      <li>• Exhibition stall (3x3 meters)</li>
-                      <li>• Book display setup</li>
-                      <li>• Basic promotional materials</li>
-                      <li>• Author registration</li>
-                      <li>• 2 days participation</li>
-                    </ul>
-                    <Button className="w-full mt-4 bg-red-600 hover:bg-red-700">Select Package</Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-red-500 border-2 bg-red-50">
-                  <CardHeader className="text-center">
-                    <Badge className="bg-red-500 text-white mb-2">Most Popular</Badge>
-                    <CardTitle className="text-xl text-black-800">Professional Package</CardTitle>
-                    <div className="text-3xl font-bold text-red-600">
-                      {selectedType === "national" ? "₹2 Lakh" : "₹4 Lakh"}
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm text-black-600">
-                      <li>• Premium exhibition stall (4x4 meters)</li>
-                      <li>• Professional book display</li>
-                      <li>• Marketing materials & banners</li>
-                      <li>• Author meet & greet sessions</li>
-                      <li>• Full event participation</li>
-                      <li>• Media coverage</li>
-                    </ul>
-                    <Button className="w-full mt-4 bg-red-600 hover:bg-red-700">Select Package</Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-red-200">
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-xl text-black-800">Premium Package</CardTitle>
-                    <div className="text-3xl font-bold text-red-600">
-                      {selectedType === "national" ? "₹3 Lakh" : "₹5 Lakh"}
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm text-black-600">
-                      <li>• VIP exhibition stall (5x5 meters)</li>
-                      <li>• Premium setup & decoration</li>
-                      <li>• Complete marketing package</li>
-                      <li>• Author speaking sessions</li>
-                      <li>• VIP networking events</li>
-                      <li>• Dedicated support team</li>
-                      <li>• Post-event marketing</li>
-                    </ul>
-                    <Button className="w-full mt-4 bg-red-600 hover:bg-red-700">Select Package</Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
     </>
   )
 }
