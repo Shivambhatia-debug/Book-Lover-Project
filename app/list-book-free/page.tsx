@@ -2,8 +2,8 @@
 
 import type React from "react"
 
-import { useState, useRef } from "react"
-import { Upload, CheckCircle, Star, Award, Users, TrendingUp } from "lucide-react"
+import { useState, useRef, useEffect } from "react"
+import { Upload, CheckCircle, Star, Award, Users, TrendingUp, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,6 +11,9 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import UploadInstructionModal from "@/components/UploadInstructionModal"
+import { validateBookPrice, calculateMinimumPrice } from "@/lib/pricing-utils"
 
 const benefits = [
   {
@@ -55,9 +58,33 @@ export default function ListBookFreePage() {
   const [bookCover, setBookCover] = useState<File | null>(null)
   const [manuscript, setManuscript] = useState<File | null>(null)
   const [submitted, setSubmitted] = useState(false)
+  const [showInstructionModal, setShowInstructionModal] = useState(false)
+  const [modalFileType, setModalFileType] = useState<"cover" | "manuscript">("cover")
+  const [priceValidation, setPriceValidation] = useState({
+    isValid: true,
+    message: "",
+    suggestedPrice: 0,
+  })
 
   const bookCoverRef = useRef<HTMLInputElement>(null)
   const manuscriptRef = useRef<HTMLInputElement>(null)
+
+  // Validate price based on page count
+  const validatePrice = (price: string, pages: string) => {
+    const validation = validateBookPrice(price, pages)
+    setPriceValidation({
+      isValid: validation.isValid,
+      message: validation.message,
+      suggestedPrice: validation.suggestedPrice,
+    })
+  }
+
+  // Update validation when price or pages change
+  useEffect(() => {
+    if (formData.price && formData.pages) {
+      validatePrice(formData.price, formData.pages)
+    }
+  }, [formData.price, formData.pages])
 
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData({ ...formData, [field]: value })
@@ -71,12 +98,39 @@ export default function ListBookFreePage() {
     }
   }
 
+  const handleFileUploadClick = (type: "cover" | "manuscript") => {
+    setModalFileType(type)
+    setShowInstructionModal(true)
+  }
+
+  const handleFileUploadAfterModal = (type: "cover" | "manuscript") => {
+    setShowInstructionModal(false)
+    if (type === "cover") {
+      bookCoverRef.current?.click()
+    } else {
+      manuscriptRef.current?.click()
+    }
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.agreeTerms) {
       alert("Please agree to the terms and conditions")
       return
     }
+
+    // Validate price before submission
+    if (formData.price && formData.pages) {
+      const priceNum = parseFloat(formData.price)
+      const pagesNum = parseInt(formData.pages)
+      const minimumPrice = calculateMinimumPrice(pagesNum)
+
+      if (priceNum < minimumPrice) {
+        alert(`Price must be at least ₹${minimumPrice} for a book with ${pagesNum} pages.`)
+        return
+      }
+    }
+
     console.log("Form submitted:", { formData, bookCover, manuscript })
     setSubmitted(true)
   }
@@ -217,9 +271,40 @@ export default function ListBookFreePage() {
                       value={formData.price}
                       onChange={(e) => handleInputChange("price", e.target.value)}
                       placeholder="Enter price in rupees"
-                      className="border-red-200 focus:border-red-500"
+                      className={`border-red-200 focus:border-red-500 ${
+                        formData.price && formData.pages && !priceValidation.isValid
+                          ? "border-red-500 focus:border-red-700"
+                          : ""
+                      }`}
                       required
                     />
+                    {formData.price && formData.pages && (
+                      <div className="mt-2">
+                        {!priceValidation.isValid ? (
+                          <Alert className="border-red-200 bg-red-50">
+                            <AlertCircle className="h-4 w-4 text-red-600" />
+                            <AlertDescription className="text-red-700">
+                              {priceValidation.message}
+                              {priceValidation.suggestedPrice > 0 && (
+                                <span className="block mt-1">
+                                  Suggested price: ₹{priceValidation.suggestedPrice}
+                                </span>
+                              )}
+                            </AlertDescription>
+                          </Alert>
+                        ) : (
+                          <p className="text-sm text-green-600 flex items-center">
+                            <CheckCircle className="h-4 w-4 mr-1" />
+                            {priceValidation.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    {formData.pages && !formData.price && (
+                      <p className="text-sm text-black-600 mt-1">
+                        💡 Minimum price for {formData.pages} pages: ₹{calculateMinimumPrice(parseInt(formData.pages) || 0)}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -234,6 +319,9 @@ export default function ListBookFreePage() {
                       placeholder="Total pages"
                       className="border-red-200 focus:border-red-500"
                     />
+                    <p className="text-xs text-black-500 mt-1">
+                      💡 Pricing: ≤100 pages = ₹200 minimum, &gt;100 pages = ₹200 + ₹2 per additional page
+                    </p>
                   </div>
 
                   <div>
@@ -298,7 +386,7 @@ export default function ListBookFreePage() {
                       <Button
                         type="button"
                         variant="outline"
-                        onClick={() => bookCoverRef.current?.click()}
+                        onClick={() => handleFileUploadClick("cover")}
                         className="w-full border-red-300 text-red-600 hover:bg-red-50 h-24"
                       >
                         <Upload className="h-6 w-6 mr-2" />
@@ -324,7 +412,7 @@ export default function ListBookFreePage() {
                       <Button
                         type="button"
                         variant="outline"
-                        onClick={() => manuscriptRef.current?.click()}
+                        onClick={() => handleFileUploadClick("manuscript")}
                         className="w-full border-red-300 text-red-600 hover:bg-red-50 h-24"
                       >
                         <Upload className="h-6 w-6 mr-2" />
@@ -432,6 +520,14 @@ export default function ListBookFreePage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Upload Instruction Modal */}
+      <UploadInstructionModal
+        isOpen={showInstructionModal}
+        onClose={() => setShowInstructionModal(false)}
+        onContinue={() => handleFileUploadAfterModal(modalFileType)}
+        fileType={modalFileType}
+      />
     </div>
   )
 }

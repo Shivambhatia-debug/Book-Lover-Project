@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Check, X, Heart, BookOpen, Award, Crown, Sparkles, Shield, Gem, Star, Zap, ArrowRight } from "lucide-react"
+import { Check, X, Heart, BookOpen, Award, Crown, Sparkles, Shield, Gem, Star, Zap, ArrowRight, RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -203,6 +203,13 @@ export default function PackagesPreview() {
                     {pkg.freeBenefit && (
                       <div className="text-xs opacity-90">
                         Free Benefit Worth: ₹{pkg.freeBenefit}/-
+                      </div>
+                    )}
+
+                    {pkg.freeBenefit && (
+                      <div className="text-xs opacity-80 mt-2 flex items-center gap-1 justify-center">
+                        <RefreshCw className="h-3 w-3" />
+                        Free benefits from your publishing package can be redeemed against Book Fair Packages (₹6000 / ₹8000 / ₹10000).
                       </div>
                     )}
                   </CardHeader>

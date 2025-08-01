@@ -29,7 +29,7 @@ const nationalFairs = [
   },
   {
     id: 3,
-    city: "Delhi",
+    city: "Coimbatore",
     date: "To be announced",
     venue: "To be announced",
     image: "/images/blc5.jpg",

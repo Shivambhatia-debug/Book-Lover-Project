@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import Link from "next/link"
 
 const benefits = [
   "Professional editing and proofreading",
@@ -25,7 +26,6 @@ export default function PublishWithUsSection() {
     name: "",
     email: "",
     phone: "",
-    message: "",
   })
 
   const scrollToContact = () => {
@@ -131,18 +131,7 @@ export default function PublishWithUsSection() {
                   />
                 </div>
 
-                <div>
-                  <Label htmlFor="message" className="text-black-700 font-medium text-xs sm:text-base">
-                    Tell us about your book
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Brief description of your book, genre, current status..."
-                    className="border-red-200 focus:border-red-500 bg-white h-20 sm:h-24"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
+
 
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                   <Button
@@ -162,6 +151,7 @@ export default function PublishWithUsSection() {
                     Contact Us
                   </Button>
                 </div>
+
               </form>
             </CardContent>
           </Card>

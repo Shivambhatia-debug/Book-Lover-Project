@@ -16,7 +16,7 @@ const upcomingFairs = [
     location: "Upcoming",
     address: "Upcoming",
     attendees: "5000+",
-    image: "/images/blc7.jpg",
+    image: "/images/mumbaibook.jpg",
     description:
       "Join us for three days of literary celebration with author readings, book signings, and workshops. This premier event brings together readers, writers, and industry professionals.",
     highlights: [
@@ -31,12 +31,12 @@ const upcomingFairs = [
   },
   {
     id: 2,
-    name: "Delhi Book Fare Festival",
+    name: "Coimbatore Book Fare Festival",
     date: "Upcoming",
     location: "Upcoming",
     address: "Upcoming",
     attendees: "2000+",
-    image: "/images/blc9.jpg",
+    image: "/images/coimbatorebook.jpg",
     description:
       "Discover emerging voices in literature and meet independent authors from around the region. A perfect venue for discovering your next favorite book.",
     highlights: [
@@ -56,7 +56,7 @@ const upcomingFairs = [
     location: "Upcoming",
     address: "Upcoming",
     attendees: "8000+",
-    image: "/images/bl4.jpg",
+    image: "/images/punebook.jpg",
     description:
       "The largest book fair of the year featuring bestselling authors and exclusive book launches. Don't miss this spectacular literary event.",
     highlights: [
@@ -125,11 +125,6 @@ export default function BookFairsPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                   <div className="relative h-64 lg:h-auto">
                     <Image src={fair.image || "/placeholder.svg"} alt={fair.name} fill className="object-cover" />
-                    <div className="absolute top-4 right-4">
-                      <Badge className="bg-amber-500 text-white">
-                        {fair.status === "upcoming" ? "Upcoming" : "Past Event"}
-                      </Badge>
-                    </div>
                   </div>
 
                   <div className="lg:col-span-2 p-8">
@@ -183,7 +178,9 @@ export default function BookFairsPage() {
 
                       <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-burgundy-100">
                         <Button className="bg-burgundy-600 hover:bg-burgundy-700 flex-1 w-full sm:w-auto" asChild>
-                          <Link href="/publishing-packages">Register Now</Link>
+                          <Link href={fair.name.includes("Mumbai") ? "/publishing-packages/mumbai" : fair.name.includes("Pune") ? "/publishing-packages/pune" : "/publishing-packages/coimbatore"}>
+                            Register Now
+                          </Link>
                         </Button>
                         <Button
                           variant="outline"
@@ -203,7 +200,7 @@ export default function BookFairsPage() {
         {/* Past Events */}
         {/* Replace past events grid with a slideshow */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-burgundy-900 mb-8">Past Events Glimpse</h2>
+          <h2 className="text-3xl font-bold text-burgundy-900 mb-8 text-center">Glimpses of Past Events</h2>
           <PastEventsSlideshow />
         </div>
 
@@ -228,15 +225,42 @@ export default function BookFairsPage() {
   )
 }
 
-const pastEventImages = [
-  "/images/pe1.jpg",
-  "/images/pe2.jpg",
-  "/images/pe3.jpg",
-  "/images/pe4.jpg",
-  "/images/pe5.jpg",
-  "/images/pe7.jpg",
-  "/images/pe8.jpg",
-  "/images/pe10.jpg",
+const pastEventData = [
+  {
+    image: "/images/coimbatorebook.jpg",
+    title: "International Book Expo 2023",
+    message: "Global Literature and Cultural Diversity"
+  },
+  {
+    image: "/images/past1.jpg",
+    title: "Winter Literary Festival 2023",
+    message: "Celebrating Classic Literature and Modern Voices"
+  },
+  {
+    image: "/images/past2.jpg",
+    title: "Spring Book Carnival 2023",
+    message: "Where Stories Come Alive and Dreams Take Flight"
+  },
+  {
+    image: "/images/past3.jpg",
+    title: "Summer Reading Extravaganza 2023",
+    message: "Discovering New Worlds Through the Power of Words"
+  },
+  {
+    image: "/images/past4.jpg",
+    title: "Autumn Literary Gathering 2023",
+    message: "Bridging Cultures Through Shared Stories"
+  },
+  {
+    image: "/images/past5.jpg",
+    title: "Festival of Words 2023",
+    message: "Uniting Readers and Writers in Literary Celebration"
+  },
+  {
+    image: "/images/past6.jpg",
+    title: "Book Lovers Convention 2023",
+    message: "Creating Lasting Memories Through Literature"
+  }
 ]
 
 function PastEventsSlideshow() {
@@ -244,37 +268,45 @@ function PastEventsSlideshow() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % pastEventImages.length)
+      setCurrent((prev) => (prev + 1) % pastEventData.length)
     }, 3500)
     return () => clearInterval(timer)
   }, [])
 
   return (
-    <div className="relative w-full max-w-3xl mx-auto h-80 sm:h-96 rounded-xl overflow-hidden shadow-lg">
-      {pastEventImages.map((src, idx) => (
-        <div
-          key={src}
-          className={`absolute inset-0 transition-opacity duration-1000 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-        >
-          <Image
-            src={src}
-            alt={`Past Event ${idx + 1}`}
-            fill
-            className="object-cover w-full h-full"
-            priority={idx === 0}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-        </div>
-      ))}
-      {/* Slide indicators */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {pastEventImages.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrent(idx)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === current ? 'bg-amber-500 scale-110' : 'bg-white/60 hover:bg-white/80'}`}
-          />
+    <div className="space-y-6">
+      <div className="relative w-full max-w-3xl mx-auto h-80 sm:h-96 rounded-xl overflow-hidden shadow-lg">
+        {pastEventData.map((event, idx) => (
+          <div
+            key={event.image}
+            className={`absolute inset-0 transition-opacity duration-1000 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+          >
+            <Image
+              src={event.image}
+              alt={event.title}
+              fill
+              className="object-cover w-full h-full"
+              priority={idx === 0}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent" />
+          </div>
         ))}
+        {/* Slide indicators */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+          {pastEventData.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === current ? 'bg-amber-500 scale-110' : 'bg-white/60 hover:bg-white/80'}`}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Title and message below the image */}
+      <div className="text-center">
+        <h3 className="text-2xl font-bold text-burgundy-900 mb-2">{pastEventData[current].title}</h3>
+        <p className="text-lg text-burgundy-700">{pastEventData[current].message}</p>
       </div>
     </div>
   )
