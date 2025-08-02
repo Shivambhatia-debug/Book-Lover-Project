@@ -35,9 +35,6 @@ export default function Navbar() {
             <Link href="/packages" className="hover:text-red-600 transition-colors font-medium">
               Publishing Packages
             </Link>
-            <Link href="/author-dashboard" className="hover:text-red-600 transition-colors font-medium">
-              Author Dashboard
-            </Link>
             <Link href="/about" className="hover:text-red-600 transition-colors font-medium">
               About Us
             </Link>
@@ -75,9 +72,6 @@ export default function Navbar() {
               </Link>
               <Link href="/packages" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
                 Publishing Packages
-              </Link>
-              <Link href="/author-dashboard" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
-                Author Dashboard
               </Link>
               <Link href="/about" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
                 About Us

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Upload, CheckCircle, Clock, CreditCard, FileText, Phone, Mail } from "lucide-react"
 import { toast } from "sonner"
+import PaymentGateway from "@/components/PaymentGateway"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
@@ -59,14 +60,59 @@ export default function AuthorDashboard() {
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null)
   const [uploadProgress] = useState(85)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("")
+  const [activeTab, setActiveTab] = useState("upload-status")
+  const [paymentOpen, setPaymentOpen] = useState(false)
+  const [selectedPaymentPackage, setSelectedPaymentPackage] = useState<any>(null)
 
   const handlePackageSelect = (packageId: number) => {
     setSelectedPackage(packageId)
+    
+    // Open payment gateway immediately
+    const pkg = publishingPackages.find(p => p.id === packageId)
+    if (pkg) {
+      const paymentPackage = {
+        id: pkg.id.toString(),
+        name: pkg.name,
+        price: pkg.price,
+        originalPrice: pkg.originalPrice,
+        description: "Publishing Package - Transform your manuscript into a bestseller",
+        features: pkg.features
+      }
+      setSelectedPaymentPackage(paymentPackage)
+      setPaymentOpen(true)
+    }
+  }
+
+  const handleChoosePackage = () => {
+    setActiveTab("pricing")
   }
 
   const handlePayment = () => {
-    toast.success("Payment processing... Redirecting to payment gateway")
-    // Here you would integrate with actual payment gateway
+    if (!selectedPackage) {
+      toast.error("Please select a package first")
+      return
+    }
+    
+    const pkg = publishingPackages.find(p => p.id === selectedPackage)
+    if (pkg) {
+      const paymentPackage = {
+        id: pkg.id.toString(),
+        name: pkg.name,
+        price: pkg.price,
+        originalPrice: pkg.originalPrice,
+        description: "Publishing Package - Transform your manuscript into a bestseller",
+        features: pkg.features
+      }
+      setSelectedPaymentPackage(paymentPackage)
+      setPaymentOpen(true)
+    }
+  }
+
+  const handlePaymentSuccess = () => {
+    setPaymentOpen(false)
+    setSelectedPaymentPackage(null)
+    setActiveTab("payment")
+    toast.success("Package purchased successfully! Welcome to the Booklover family!")
   }
 
   return (
@@ -79,11 +125,20 @@ export default function AuthorDashboard() {
           <p className="text-xl text-gray-600">Manage your publishing journey with Booklover Publishing House</p>
         </div>
 
-        <Tabs defaultValue="upload-status" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-1 md:grid-cols-3">
-            <TabsTrigger value="upload-status">Upload Status</TabsTrigger>
-            <TabsTrigger value="pricing">Pricing & Packages</TabsTrigger>
-            <TabsTrigger value="payment">Payment & Support</TabsTrigger>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto p-1">
+            <TabsTrigger value="upload-status" className="text-xs sm:text-sm py-2 sm:py-3">
+              <span className="hidden sm:inline">Upload Status</span>
+              <span className="sm:hidden">Status</span>
+            </TabsTrigger>
+            <TabsTrigger value="pricing" className="text-xs sm:text-sm py-2 sm:py-3">
+              <span className="hidden sm:inline">Pricing & Packages</span>
+              <span className="sm:hidden">Pricing</span>
+            </TabsTrigger>
+            <TabsTrigger value="payment" className="text-xs sm:text-sm py-2 sm:py-3">
+              <span className="hidden sm:inline">Payment & Support</span>
+              <span className="sm:hidden">Payment</span>
+            </TabsTrigger>
           </TabsList>
 
           {/* Upload Status Tab */}
@@ -141,7 +196,10 @@ export default function AuthorDashboard() {
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
                   <h3 className="font-bold text-gray-900 mb-2">Next Steps</h3>
                   <p className="text-gray-700 mb-4">Your files have been successfully uploaded! Choose a publishing package to proceed.</p>
-                  <Button className="bg-blue-600 hover:bg-blue-700">
+                  <Button 
+                    onClick={handleChoosePackage}
+                    className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+                  >
                     Choose Publishing Package
                   </Button>
                 </div>
@@ -156,7 +214,7 @@ export default function AuthorDashboard() {
               <p className="text-lg text-gray-600">Select the perfect package for your publishing journey</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {publishingPackages.map((pkg) => (
                 <Card 
                   key={pkg.id} 
@@ -170,10 +228,10 @@ export default function AuthorDashboard() {
                     </div>
                   )}
                   
-                  <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center pb-6">
-                    <CardTitle className="text-2xl font-bold mb-2">{pkg.name}</CardTitle>
+                  <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center pb-4 sm:pb-6">
+                    <CardTitle className="text-lg sm:text-xl xl:text-2xl font-bold mb-2">{pkg.name}</CardTitle>
                     <div className="space-y-2">
-                      <div className="text-4xl font-bold">{pkg.price}</div>
+                      <div className="text-2xl sm:text-3xl xl:text-4xl font-bold">{pkg.price}</div>
                       <div className="text-sm opacity-90">
                         <span className="line-through">{pkg.originalPrice}</span>
                         <span className="ml-2 bg-white/20 px-2 py-1 rounded">Save ₹{parseInt(pkg.originalPrice.replace('₹', '').replace(',', '')) - parseInt(pkg.price.replace('₹', '').replace(',', ''))}</span>
@@ -181,8 +239,8 @@ export default function AuthorDashboard() {
                     </div>
                   </CardHeader>
                   
-                  <CardContent className="p-6">
-                    <ul className="space-y-3 mb-6">
+                  <CardContent className="p-4 sm:p-6">
+                    <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                       {pkg.features.map((feature, index) => (
                         <li key={index} className="flex items-start space-x-3">
                           <CheckCircle className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
@@ -193,7 +251,7 @@ export default function AuthorDashboard() {
                     
                     <Button 
                       onClick={() => handlePackageSelect(pkg.id)}
-                      className={`w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-semibold ${
+                      className={`w-full bg-blue-600 hover:bg-blue-700 text-white py-2 sm:py-3 text-sm sm:text-lg font-semibold ${
                         selectedPackage === pkg.id ? 'ring-2 ring-offset-2 ring-blue-500' : ''
                       }`}
                     >
@@ -226,7 +284,7 @@ export default function AuthorDashboard() {
 
                   <div className="space-y-4">
                     <Label className="text-lg font-semibold">Payment Methods</Label>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                       {["Credit/Debit Card", "UPI Payment", "Net Banking", "Digital Wallet"].map((method, index) => (
                         <Card 
                           key={index}
@@ -235,9 +293,9 @@ export default function AuthorDashboard() {
                           }`}
                           onClick={() => setSelectedPaymentMethod(method)}
                         >
-                          <CardContent className="p-4 flex items-center space-x-3">
-                            <CreditCard className="h-6 w-6 text-blue-600" />
-                            <span className="font-medium">{method}</span>
+                          <CardContent className="p-3 sm:p-4 flex flex-col sm:flex-row items-center sm:space-x-3 space-y-2 sm:space-y-0 text-center sm:text-left">
+                            <CreditCard className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
+                            <span className="font-medium text-sm sm:text-base">{method}</span>
                           </CardContent>
                         </Card>
                       ))}
@@ -247,19 +305,19 @@ export default function AuthorDashboard() {
                   {selectedPaymentMethod && (
                     <div className="space-y-4 p-4 bg-gray-50 rounded-lg">
                       <h4 className="font-semibold">Payment Information</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <Label htmlFor="email">Email Address</Label>
-                          <Input id="email" placeholder="your@email.com" />
+                          <Label htmlFor="email" className="text-sm">Email Address</Label>
+                          <Input id="email" placeholder="your@email.com" className="text-sm" />
                         </div>
                         <div>
-                          <Label htmlFor="phone">Phone Number</Label>
-                          <Input id="phone" placeholder="+91 98765 43210" />
+                          <Label htmlFor="phone" className="text-sm">Phone Number</Label>
+                          <Input id="phone" placeholder="+91 98765 43210" className="text-sm" />
                         </div>
                       </div>
                       <Button 
                         onClick={handlePayment}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg font-semibold"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white py-2 sm:py-3 text-sm sm:text-lg font-semibold"
                       >
                         Proceed to Payment Gateway
                       </Button>
@@ -280,27 +338,27 @@ export default function AuthorDashboard() {
               <CardContent className="space-y-4">
                 <p className="text-gray-700">Our publishing experts are here to help you choose the right package.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-lg">
-                    <Phone className="h-6 w-6 text-blue-600" />
-                    <div>
-                      <p className="font-medium text-blue-900">Call Us</p>
-                      <p className="text-sm text-blue-700">+91 9142994429</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-blue-50 rounded-lg">
+                    <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <p className="font-medium text-blue-900 text-sm sm:text-base">Call Us</p>
+                      <p className="text-xs sm:text-sm text-blue-700 break-all">+91 9142994429</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-3 p-4 bg-green-50 rounded-lg">
-                    <Mail className="h-6 w-6 text-green-600" />
-                    <div>
-                      <p className="font-medium text-green-900">Email Us</p>
-                      <p className="text-sm text-green-700">bookloverpublishinghouse@gmail.com</p>
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-green-50 rounded-lg">
+                    <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-green-600 flex-shrink-0" />
+                    <div className="min-w-0">
+                      <p className="font-medium text-green-900 text-sm sm:text-base">Email Us</p>
+                      <p className="text-xs sm:text-sm text-green-700 break-all">bookloverpublishinghouse@gmail.com</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Publishing Timeline</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-3 sm:p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Publishing Timeline</h4>
+                  <ul className="text-xs sm:text-sm text-gray-700 space-y-1">
                     <li>• Payment Processing: 1-2 business days</li>
                     <li>• Editing & Design: 7-14 business days</li>
                     <li>• Printing & Publishing: 15-21 business days</li>
@@ -311,6 +369,14 @@ export default function AuthorDashboard() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* Payment Gateway */}
+        <PaymentGateway
+          isOpen={paymentOpen}
+          onClose={() => setPaymentOpen(false)}
+          selectedPackage={selectedPaymentPackage}
+          onSuccess={handlePaymentSuccess}
+        />
       </div>
     </div>
   )

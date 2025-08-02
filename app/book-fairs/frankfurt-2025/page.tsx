@@ -1,10 +1,12 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { Phone, Mail, Calendar, MapPin, Globe, CheckCircle, Star, Trophy, Users, Plane, Camera, Video, BookOpen, Award, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import PaymentGateway from "@/components/PaymentGateway"
 
 const packages = [
   {
@@ -103,6 +105,27 @@ const getColorClasses = (color: string) => {
 }
 
 export default function FrankfurtBookFair2025() {
+  const [paymentOpen, setPaymentOpen] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState<any>(null)
+
+  const handleRegister = (pkg: any) => {
+    const paymentPackage = {
+      id: pkg.id.toString(),
+      name: pkg.name,
+      price: pkg.price,
+      description: `Frankfurt Book Fair 2025 - ${pkg.subtitle}`,
+      features: pkg.features
+    }
+    setSelectedPackage(paymentPackage)
+    setPaymentOpen(true)
+  }
+
+  const handlePaymentSuccess = () => {
+    setPaymentOpen(false)
+    setSelectedPackage(null)
+    // You can add success handling here (redirect, show confirmation, etc.)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
@@ -205,8 +228,11 @@ export default function FrankfurtBookFair2025() {
                       <p className="text-gray-700 text-sm">{pkg.perfectFor}</p>
                     </div>
                     
-                    <Button className={`w-full ${colors.bg} ${colors.hover} text-white py-3 text-lg font-semibold`}>
-                      Register 
+                    <Button 
+                      onClick={() => handleRegister(pkg)}
+                      className={`w-full ${colors.bg} ${colors.hover} text-white py-3 text-lg font-semibold`}
+                    >
+                      Register for {pkg.price}
                     </Button>
                   </CardContent>
                 </Card>
@@ -300,6 +326,14 @@ export default function FrankfurtBookFair2025() {
           </div>
         </div>
       </section>
+
+      {/* Payment Gateway */}
+      <PaymentGateway
+        isOpen={paymentOpen}
+        onClose={() => setPaymentOpen(false)}
+        selectedPackage={selectedPackage}
+        onSuccess={handlePaymentSuccess}
+      />
     </div>
   )
 }

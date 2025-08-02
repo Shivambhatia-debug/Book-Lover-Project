@@ -130,6 +130,7 @@ export default function PackagesPreview() {
               <Button
                 size="lg"
                 className="w-full sm:w-auto bg-white text-red-600 hover:bg-red-50 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                suppressHydrationWarning
               >
                 View Detailed Comparison
               </Button>
@@ -139,6 +140,7 @@ export default function PackagesPreview() {
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-red-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-transparent backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
+                suppressHydrationWarning
               >
                 Start for FREE
               </Button>
@@ -255,6 +257,7 @@ export default function PackagesPreview() {
                     <Button
                       asChild
                       className={`w-full py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${pkg.popular ? "bg-orange-500 hover:bg-orange-600 text-white" : pkg.featured ? "bg-purple-500 hover:bg-purple-600 text-white" : `${colors.bg} hover:opacity-90 text-white`}`}
+                      suppressHydrationWarning
                     >
                       <Link href="/publishing-packages">
                         Get Started
@@ -274,6 +277,7 @@ export default function PackagesPreview() {
               size="lg"
               variant="outline"
               className="w-full sm:w-auto border-red-600 text-red-600 hover:bg-red-600 hover:text-white bg-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              suppressHydrationWarning
             >
               Compare All Packages
               <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />

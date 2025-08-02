@@ -123,7 +123,12 @@ export default function FeaturedBooks() {
 
                   <div className="flex items-center justify-between">
                     <span className="text-lg md:text-2xl font-bold text-black-800">₹{book.price}</span>
-                    <Button size="sm" className="bg-red-600 hover:bg-red-700" onClick={() => handleAddToCart(book)}>
+                    <Button 
+                      size="sm" 
+                      className="bg-red-600 hover:bg-red-700" 
+                      onClick={() => handleAddToCart(book)}
+                      suppressHydrationWarning
+                    >
                       <ShoppingCart className="h-4 w-4 mr-1" />
                       Add to Cart
                     </Button>
@@ -172,6 +177,7 @@ export default function FeaturedBooks() {
                             size="sm"
                             className="bg-red-600 hover:bg-red-700"
                             onClick={() => handleAddToCart(book)}
+                            suppressHydrationWarning
                           >
                             <ShoppingCart className="h-4 w-4 mr-1" />
                             Add
@@ -189,12 +195,14 @@ export default function FeaturedBooks() {
           <button
             onClick={prevSlide}
             className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg z-10"
+            suppressHydrationWarning
           >
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 text-black-800" />
           </button>
           <button
             onClick={nextSlide}
             className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg z-10"
+            suppressHydrationWarning
           >
             <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-black-800" />
           </button>
@@ -206,6 +214,7 @@ export default function FeaturedBooks() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex ? "bg-red-600" : "bg-gray-300"}`}
+                suppressHydrationWarning
               />
             ))}
           </div>
@@ -217,6 +226,7 @@ export default function FeaturedBooks() {
               size="lg"
               variant="outline"
               className="w-full sm:w-auto border-red-600 text-red-600 hover:bg-red-600 hover:text-white bg-white"
+              suppressHydrationWarning
             >
               View All Books
             </Button>

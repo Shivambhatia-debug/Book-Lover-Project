@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { toast } from "sonner"
 import Link from "next/link"
 
 const benefits = [
@@ -27,6 +28,7 @@ export default function PublishWithUsSection() {
     email: "",
     phone: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact-section")
@@ -35,10 +37,53 @@ export default function PublishWithUsSection() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission - integrate with backend API
-    // Example: await submitPublishingForm(formData)
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
+      toast.error("Please fill in all required fields")
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address")
+      return
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/
+    if (!phoneRegex.test(formData.phone)) {
+      toast.error("Please enter a valid phone number")
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      // Show success message
+      toast.success("🎉 Thank you! We will connect you within 24 hours", {
+        description: "Our publishing experts will reach out to discuss your book publishing journey.",
+        duration: 5000,
+      })
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+      })
+
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -137,10 +182,11 @@ export default function PublishWithUsSection() {
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                   <Button
                     type="submit"
-                    className="flex-1 w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="flex-1 w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2" />
-                    Publish Now
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </Button>
                   <Button
                     type="button"

@@ -128,6 +128,7 @@ export default function TestimonialsSection() {
               variant="outline"
               size="sm"
               className="border-white/30 text-white hover:bg-white/20 bg-transparent"
+              suppressHydrationWarning
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -138,6 +139,7 @@ export default function TestimonialsSection() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex ? "bg-red-400" : "bg-white/30"}`}
+                  suppressHydrationWarning
                 />
               ))}
             </div>
@@ -147,6 +149,7 @@ export default function TestimonialsSection() {
               variant="outline"
               size="sm"
               className="border-white/30 text-white hover:bg-white/20 bg-transparent"
+              suppressHydrationWarning
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
