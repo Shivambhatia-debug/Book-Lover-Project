@@ -153,7 +153,7 @@ export default function BookFairsPage() {
                 
                 <Button asChild className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 text-lg font-semibold">
                   <Link href="/book-fairs/frankfurt-2025">
-                    View Frankfurt Packages & Register
+                    View Frankfurt Packages 
                   </Link>
                 </Button>
               </div>
@@ -259,19 +259,23 @@ export default function BookFairsPage() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="bg-gradient-to-r from-burgundy-900 to-burgundy-800 text-white rounded-lg p-12 text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated on Book Fair Events</h2>
-          <p className="text-xl text-cream-200 mb-8 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-burgundy-900 to-burgundy-800 text-white rounded-lg p-6 sm:p-8 md:p-12 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">Stay Updated on Book Fair Events</h2>
+          <p className="text-lg sm:text-xl text-cream-200 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Be the first to know about upcoming book fairs, author appearances, and special literary events in your
             area.
           </p>
-          <div className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 px-4 py-3 rounded-lg text-burgundy-900 border-0 focus:ring-2 focus:ring-amber-400"
-            />
-            <Button className="bg-amber-600 hover:bg-amber-700 px-8">Subscribe</Button>
+          <div className="max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="flex-1 px-4 py-3 rounded-lg text-burgundy-900 border-0 focus:ring-2 focus:ring-amber-400 w-full"
+              />
+              <Button className="bg-amber-600 hover:bg-amber-700 px-6 sm:px-8 py-3 whitespace-nowrap">
+                Subscribe
+              </Button>
+            </div>
           </div>
         </div>
       </div>
