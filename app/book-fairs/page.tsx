@@ -107,10 +107,64 @@ export default function BookFairsPage() {
           </p>
         </div>
 
+        {/* Featured International Event */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <Badge className="bg-blue-600 text-white px-4 py-2 text-lg mb-4">
+              🌍 Featured International Event
+            </Badge>
+            <h2 className="text-3xl font-bold text-burgundy-900 mb-4">Frankfurt Book Fair 2025</h2>
+          </div>
+          
+          <Card className="border-blue-200 shadow-2xl overflow-hidden mb-12 bg-gradient-to-r from-blue-50 to-purple-50">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              <div className="relative h-64 lg:h-auto">
+                <Image src="/images/bli11.jpg" alt="Frankfurt Book Fair 2025" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20" />
+              </div>
+              
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-burgundy-900 mb-4">
+                  Showcase Your Book at Frankfurt Book Fair 2025 – Germany
+                </h3>
+                <p className="text-burgundy-700 mb-6 leading-relaxed">
+                  Be part of the world's largest book event! Your book deserves a global platform at the India National Stand by Booklover Publishing House.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                  <div className="text-center p-3 bg-white rounded-lg shadow">
+                    <div className="text-blue-600 font-bold text-lg">₹25,000</div>
+                    <div className="text-sm text-gray-600">Featured Display</div>
+                  </div>
+                  <div className="text-center p-3 bg-white rounded-lg shadow">
+                    <div className="text-red-600 font-bold text-lg">₹45,000</div>
+                    <div className="text-sm text-gray-600">Premium Rep.</div>
+                  </div>
+                  <div className="text-center p-3 bg-white rounded-lg shadow">
+                    <div className="text-amber-600 font-bold text-lg">₹75,000</div>
+                    <div className="text-sm text-gray-600">Global Rights</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center text-burgundy-700 mb-4">
+                  <Calendar className="h-5 w-5 mr-3 text-blue-600" />
+                  <span className="font-medium">October 15-19, 2025 | Frankfurt, Germany</span>
+                </div>
+                
+                <Button asChild className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 text-lg font-semibold">
+                  <Link href="/book-fairs/frankfurt-2025">
+                    View Frankfurt Packages & Register
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* Upcoming Events */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-burgundy-900"> Events</h2>
+            <h2 className="text-3xl font-bold text-burgundy-900">Domestic Events</h2>
             <Badge variant="outline" className="border-amber-500 text-amber-700 bg-amber-50">
               {upcomingFairs.length} Events Scheduled
             </Badge>

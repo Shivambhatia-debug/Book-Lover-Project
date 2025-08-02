@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 import { Upload, FileText, Image, AlertTriangle, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,9 +10,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export default function PublishNowPage() {
+  const router = useRouter()
   const [bookFile, setBookFile] = useState<File | null>(null)
   const [coverFile, setCoverFile] = useState<File | null>(null)
   const [selectedBookSize, setSelectedBookSize] = useState<string>("5x8")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleBookFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -34,6 +38,26 @@ export default function PublishNowPage() {
         return "13.5 inches"
       default:
         return "11.25 inches"
+    }
+  }
+
+  const handleSubmit = async () => {
+    if (!bookFile || !coverFile) return
+    
+    setIsSubmitting(true)
+    
+    // Simulate file upload process
+    try {
+      // Here you would typically upload files to your server
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      // Redirect to author dashboard after successful upload
+      router.push('/author-dashboard')
+    } catch (error) {
+      console.error('Upload failed:', error)
+      toast.error('Upload failed. Please try again.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -267,10 +291,14 @@ export default function PublishNowPage() {
             <Button 
               size="lg" 
               className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-lg"
-              disabled={!bookFile || !coverFile}
+              disabled={!bookFile || !coverFile || isSubmitting}
+              onClick={handleSubmit}
             >
-              Submit for Publishing Review
+              {isSubmitting ? "Uploading Files..." : "Submit for Publishing Review"}
             </Button>
+            <p className="text-sm text-gray-600 mt-2">
+              After submission, you'll be redirected to your dashboard to choose pricing packages
+            </p>
           </div>
         </div>
       </div>

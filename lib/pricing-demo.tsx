@@ -11,7 +11,7 @@ export default function PricingDemo() {
     setPages(value)
     if (value && price) {
       const validation = validateBookPrice(price, value)
-      console.log("Validation result:", validation)
+      // Validation result can be used for UI feedback
     }
   }
 
@@ -19,7 +19,7 @@ export default function PricingDemo() {
     setPrice(value)
     if (value && pages) {
       const validation = validateBookPrice(value, pages)
-      console.log("Validation result:", validation)
+      // Validation result can be used for UI feedback
     }
   }
 

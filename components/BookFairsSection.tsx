@@ -51,9 +51,9 @@ const internationalFairs = [
   {
     id: 2,
     city: "Frankfurt, Germany",
-    date: "To be announced",
-    venue: "To be announced",
-    image: "/images/bl4.jpg",
+    date: "October 15-19, 2025",
+    venue: "Frankfurt Book Fair",
+    image: "/images/bli1.jpg",
     attendees: "300,000+",
     status: "upcoming",
   },
@@ -135,7 +135,7 @@ export default function BookFairsSection() {
                   size="lg"
                   className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
                 >
-                  <Link href="/publishing-packages">
+                  <Link href="/book-fairs">
                     Register Now - National
                     <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />
                   </Link>
@@ -196,7 +196,7 @@ export default function BookFairsSection() {
                   size="lg"
                   className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
                 >
-                  <Link href="/publishing-packages">
+                  <Link href="/book-fairs/frankfurt-2025">
                     Register Now - International
                     <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 ml-1 sm:ml-2" />
                   </Link>

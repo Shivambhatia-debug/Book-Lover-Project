@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bookloverpublishinghouse.com/sitemap.xml
+
+# Disallow sensitive areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /author-dashboard/private/
+
+# Allow important pages
+Allow: /
+Allow: /books
+Allow: /authors
+Allow: /book-fairs
+Allow: /packages
+Allow: /publish-now
+Allow: /about

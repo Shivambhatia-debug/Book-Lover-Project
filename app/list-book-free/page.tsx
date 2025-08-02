@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
 import { Upload, CheckCircle, Star, Award, Users, TrendingUp, AlertCircle } from "lucide-react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -115,7 +116,7 @@ export default function ListBookFreePage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.agreeTerms) {
-      alert("Please agree to the terms and conditions")
+      toast.error("Please agree to the terms and conditions")
       return
     }
 

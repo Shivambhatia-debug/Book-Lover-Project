@@ -37,7 +37,8 @@ export default function PublishWithUsSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
+    // Handle form submission - integrate with backend API
+    // Example: await submitPublishingForm(formData)
   }
 
   return (
@@ -49,10 +50,10 @@ export default function PublishWithUsSection() {
             <span>India's Leading Publishing House</span>
           </div>
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-black-800 mb-4 sm:mb-6">
-            📚 Publish Your Book With <span className="text-red-600">Book Lover</span>
+            📚 Publish your book with the Best Experts
           </h2>
           <p className="text-base sm:text-xl text-black-600 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed">
-            Transform your manuscript into a bestseller! Join India's most trusted publishing house and reach readers worldwide.
+            Publish and be a part of this amazing Booklover Family. Transform your manuscript into a bestseller with India's most trusted publishing house.
           </p>
         </div>
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { toast } from "sonner"
 import { Share2, Star, ShoppingCart, BookOpen, Award, Users, Calendar, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -183,12 +184,12 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
           url: shareUrl,
         })
       } catch (error) {
-        console.log("Error sharing:", error)
+        // Handle sharing error silently
       }
     } else {
       // Fallback: copy to clipboard
       navigator.clipboard.writeText(shareUrl)
-      alert("Profile link copied to clipboard!")
+      toast.success("Profile link copied to clipboard!")
     }
   }
 
