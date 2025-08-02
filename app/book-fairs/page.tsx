@@ -323,8 +323,10 @@ const pastEventData = [
 
 function PastEventsSlideshow() {
   const [current, setCurrent] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % pastEventData.length)
     }, 3500)
@@ -356,13 +358,14 @@ function PastEventsSlideshow() {
               key={idx}
               onClick={() => setCurrent(idx)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === current ? 'bg-amber-500 scale-110' : 'bg-white/60 hover:bg-white/80'}`}
+              suppressHydrationWarning
             />
           ))}
         </div>
       </div>
       
       {/* Title and message below the image */}
-      <div className="text-center">
+      <div className="text-center" suppressHydrationWarning>
         <h3 className="text-2xl font-bold text-burgundy-900 mb-2">{pastEventData[current].title}</h3>
         <p className="text-lg text-burgundy-700">{pastEventData[current].message}</p>
       </div>

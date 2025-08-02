@@ -15,6 +15,8 @@ export default function CartDrawer() {
 
   useEffect(() => {
     setMounted(true)
+    // Rehydrate the store from localStorage after mounting
+    useCartStore.persist.rehydrate()
   }, [])
 
   const totalItems = getTotalItems()

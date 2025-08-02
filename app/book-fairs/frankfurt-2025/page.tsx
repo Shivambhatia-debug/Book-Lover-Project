@@ -206,7 +206,7 @@ export default function FrankfurtBookFair2025() {
                     </div>
                     
                     <Button className={`w-full ${colors.bg} ${colors.hover} text-white py-3 text-lg font-semibold`}>
-                      Register for {pkg.name}
+                      Register 
                     </Button>
                   </CardContent>
                 </Card>
