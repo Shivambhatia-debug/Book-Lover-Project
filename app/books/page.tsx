@@ -13,75 +13,76 @@ import Link from "next/link"
 const books = [
   {
     id: 1,
-    title: "Frankenstein",
-    author: "Mary Wollstonecraft Shelley",
+    title: "Mind Fly",
+    author: "Capt Amit Singh",
     price: 599,
-    image: "/images/frankenstein.png",
-    genre: "Classic Horror",
-    description: "A gripping tale of science, ambition, and the consequences of playing God.",
+  
+    image: "/images/book3.png",
+    genre: "Fictional",
+    description: "A captivating fictional tale that takes readers on an extraordinary journey of imagination and adventure.",
   },
   {
     id: 2,
-    title: "The Modern Prometheus",
-    author: "Mary Shelley",
+    title: "Resilience Whisper",
+    author: "Dr. Bhushan Kathuria",
     price: 449,
-    image: "/images/modernprometheus.png",
-    genre: "Gothic Fiction",
-    description: "Explore the dark themes of creation and responsibility in this timeless classic.",
+    image: "/images/book7.png",
+    genre: "Self Help Book",
+    description: "Discover the power of resilience and learn to overcome life's challenges with practical guidance.",
   },
   {
     id: 3,
-    title: "Classic Literature Collection",
-    author: "Various Authors",
+    title: "Wizard of Biology",
+    author: "Dr. Rittika A Dhankhar",
     price: 529,
-    image: "/images/classicliterature.png",
-    genre: "Classics",
-    description: "A curated collection of the world's greatest literary works.",
+    image: "/images/book5.png",
+    genre: "Educational",
+    description: "A comprehensive study guide for biology students covering all major topics and concepts.",
   },
   {
     id: 4,
-    title: "Horror Masterpieces",
-    author: "Classic Authors",
+    title: "Dil Ki Kalam Se",
+    author: "Aswani Gupta",
     price: 649,
-    image: "/images/horror.png",
-    genre: "Horror",
-    description: "The finest collection of horror stories from renowned authors.",
+    image: "/images/book8.png",
+    genre: "Poetry",
+    description: "Beautiful poetry that speaks from the heart, capturing emotions and life's precious moments.",
   },
   {
     id: 5,
-    title: "Gothic Tales",
-    author: "Victorian Authors",
+    title: "The Terrible Indian Wife",
+    author: "Anonymous",
     price: 499,
-    image: "/images/gothictales.png",
-    genre: "Gothic",
-    description: "Dark and mysterious tales from the Victorian era.",
+    image: "/images/book6.png",
+    genre: "Contemporary Fictional",
+    description: "A modern take on relationships and cultural dynamics in contemporary Indian society.",
   },
   {
     id: 6,
-    title: "Literary Classics",
-    author: "Renowned Writers",
+    title: "Beyond Money",
+    author: "Kriti Gupta",
     price: 579,
-    image: "/images/literacyclassic.png",
-    genre: "Literature",
-    description: "Essential reading from the world's most celebrated authors.",
+    image: "/images/book2.png",
+    genre: "Self Help",
+    description: "Explore life beyond material wealth and discover true happiness and fulfillment.",
   },
   {
     id: 7,
-    title: "Science Fiction Anthology",
-    author: "Modern Authors",
+    title: "My Psycho Character",
+    author: "Pranav Sood",
     price: 699,
-    image: "/images/scifi.png",
-    genre: "Sci-Fi",
-    description: "Mind-bending stories that explore the future of humanity.",
+    image: "/images/book4.png",
+    genre: "Crime Thriller",
+    description: "A gripping crime thriller that delves into the dark corners of the human psyche.",
   },
   {
     id: 8,
-    title: "Contemporary Fiction",
-    author: "New Voices",
+    title: "Story of Agent K",
+    author: "Kash Tandon",
     price: 399,
-    image: "/images/contemporary.png",
-    genre: "Contemporary",
-    description: "Fresh perspectives on modern life and relationships.",
+    image: "/images/book1.png",
+    genre: "Mystery",
+    description: "An intriguing mystery following the adventures of Agent K in a world of secrets and deception.",
   },
 ]
 
@@ -180,14 +181,14 @@ export default function BooksPage() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Genres</SelectItem>
-                  <SelectItem value="Classic Horror">Classic Horror</SelectItem>
-                  <SelectItem value="Gothic Fiction">Gothic Fiction</SelectItem>
-                  <SelectItem value="Classics">Classics</SelectItem>
-                  <SelectItem value="Horror">Horror</SelectItem>
-                  <SelectItem value="Gothic">Gothic</SelectItem>
-                  <SelectItem value="Literature">Literature</SelectItem>
-                  <SelectItem value="Sci-Fi">Sci-Fi</SelectItem>
-                  <SelectItem value="Contemporary">Contemporary</SelectItem>
+                  <SelectItem value="Fictional">Fictional</SelectItem>
+                  <SelectItem value="Self Help Book">Self Help Book</SelectItem>
+                  <SelectItem value="Educational">Educational</SelectItem>
+                  <SelectItem value="Poetry">Poetry</SelectItem>
+                  <SelectItem value="Contemporary Fictional">Contemporary Fictional</SelectItem>
+                  <SelectItem value="Self Help">Self Help</SelectItem>
+                  <SelectItem value="Crime Thriller">Crime Thriller</SelectItem>
+                  <SelectItem value="Mystery">Mystery</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -243,9 +244,9 @@ export default function BooksPage() {
                       <Image
                         src={book.image || "/placeholder.svg"}
                         alt={book.title}
-                        width={200}
-                        height={300}
-                        className="w-full h-48 object-contain bg-white hover:scale-105 transition-transform duration-300"
+                        width={400}
+                        height={500}
+                        className="w-full h-80 object-cover bg-gray-100 hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 left-2">
                         <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -324,9 +325,9 @@ export default function BooksPage() {
                       <Image
                         src={book.image || "/placeholder.svg"}
                         alt={book.title}
-                        width={200}
-                        height={300}
-                        className="w-full h-64 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
+                        width={450}
+                        height={550}
+                        className="w-full h-96 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 left-2">
                         <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -363,8 +364,8 @@ export default function BooksPage() {
                       <Image
                         src={book.image || "/placeholder.svg"}
                         alt={book.title}
-                        width={120}
-                        height={180}
+                        width={250}
+                        height={320}
                         className="rounded-lg object-contain bg-white"
                       />
                       <div className="flex-1">

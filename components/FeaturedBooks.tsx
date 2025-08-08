@@ -11,51 +11,51 @@ import { useCartStore } from "@/lib/cart-store"
 const featuredBooks = [
   {
     id: 1,
-    title: "Frankenstein",
-    author: "Mary Wollstonecraft Shelley",
-    price: 599,
-    image: "/images/frankenstein.png",
-    genre: "Classic Horror",
+    title: "Story of Agent K",
+    author: "Kash Tandon",
+    price: 399,
+    image: "/images/book1.png",
+    genre: "Mystery",
   },
   {
     id: 2,
-    title: "The Modern Prometheus",
-    author: "Mary Shelley",
-    price: 449,
-    image: "/images/modernprometheus.png",
-    genre: "Gothic Fiction",
+    title: "Beyond Money",
+    author: "Kriti Gupta",
+    price: 579,
+    image: "/images/book2.png",
+    genre: "Self Help",
   },
   {
     id: 3,
-    title: "Classic Literature Collection",
-    author: "Various Authors",
-    price: 529,
-    image: "/images/classicliterature.png",
-    genre: "Classics",
+    title: "The Terrible Indian Wife",
+    author: "Anonymous",
+    price: 499,
+    image: "/images/book6.png",
+    genre: "Contemporary Fictional",
   },
   {
     id: 4,
-    title: "Horror Masterpieces",
-    author: "Classic Authors",
-    price: 649,
-    image: "/images/horror.png",
-    genre: "Horror",
+    title: "My Psycho Character",
+    author: "Pranav Sood",
+    price: 699,
+    image: "/images/book4.png",
+    genre: "Crime Thriller",
   },
   {
     id: 5,
-    title: "Gothic Tales",
-    author: "Victorian Authors",
-    price: 499,
-    image: "/images/gothictales.png",
-    genre: "Gothic",
+    title: "Resilience Whisper",
+    author: "Dr. Bhushan Kathuria",
+    price: 449,
+    image: "/images/book7.png",
+    genre: "Self Help Book",
   },
   {
     id: 6,
-    title: "Literary Classics",
-    author: "Renowned Writers",
-    price: 579,
-    image: "/images/literacyclassic.png",
-    genre: "Literature",
+    title: "Dil Ki Kalam Se",
+    author: "Aswani Gupta",
+    price: 649,
+    image: "/images/book8.png",
+    genre: "Poetry",
   },
 ]
 
@@ -101,13 +101,13 @@ export default function FeaturedBooks() {
             >
               <CardContent className="p-0">
                 <div className="relative overflow-hidden rounded-t-lg">
-                  <Image
-                    src={book.image || "/placeholder.svg"}
-                    alt={book.title}
-                    width={200}
-                    height={300}
-                    className="w-full h-48 md:h-64 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
-                  />
+                                     <Image
+                     src={book.image || "/placeholder.svg"}
+                     alt={book.title}
+                     width={300}
+                     height={400}
+                     className="w-full h-56 md:h-72 object-cover bg-gray-100 group-hover:scale-105 transition-transform duration-300"
+                   />
                   <div className="absolute top-2 left-2">
                     <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                       {book.genre}
@@ -146,13 +146,13 @@ export default function FeaturedBooks() {
                   <Card className="group hover:shadow-xl transition-shadow duration-300 border-red-200 max-w-xs sm:max-w-sm mx-auto bg-white">
                     <CardContent className="p-0">
                       <div className="relative overflow-hidden rounded-t-lg">
-                        <Image
-                          src={book.image || "/placeholder.svg"}
-                          alt={book.title}
-                          width={200}
-                          height={300}
-                          className="w-full h-48 sm:h-64 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
-                        />
+                                                 <Image
+                           src={book.image || "/placeholder.svg"}
+                           alt={book.title}
+                           width={300}
+                           height={400}
+                           className="w-full h-56 sm:h-72 object-cover bg-gray-100 group-hover:scale-105 transition-transform duration-300"
+                         />
                         <div className="absolute top-2 left-2">
                           <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
                             {book.genre}

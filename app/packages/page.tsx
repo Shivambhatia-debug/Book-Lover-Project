@@ -5,71 +5,95 @@ import { Badge } from "@/components/ui/badge"
 
 const packages = [
   {
-    name: "Help Booklover",
-    price: "₹5,000",
-    originalPrice: null,
-    icon: Heart,
-    popular: false,
-    featured: false,
-    color: "blue",
-    description: "This package is for additional help authors are looking for.",
-    features: [
-      { text: "Copyright / ISBN / Barcode", included: false },
-      { text: "Publishing Consultant", included: true },
-      { text: "Publishing Manager", included: "conditional", note: "If required" },
-      { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: false },
-      { text: "Paperback Printing", included: false },
-    ],
-    additionalFeatures: 3,
-    timeline: "2-3 weeks",
-    support: "Email Support",
-    copies: "Not included",
-  },
-  {
-    name: "Welcome Booklover",
-    price: "₹8,999",
-    originalPrice: null,
-    icon: BookOpen,
-    popular: false,
-    featured: false,
-    color: "green",
-    description: "Perfect starting package for new authors.",
-    features: [
-      { text: "Copyright / ISBN / Barcode", included: true },
-      { text: "Publishing Consultant", included: true },
-      { text: "Publishing Manager", included: true },
-      { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: "conditional", note: "Book Cover Design, Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
-      { text: "Paperback Printing", included: false },
-    ],
-    additionalFeatures: 4,
-    timeline: "3-4 weeks",
-    support: "Email & Phone Support",
-    copies: "Not included",
-  },
-  {
-    name: "Booklover Elite",
-    price: "₹14,999",
-    originalPrice: "₹20,899",
-    icon: Award,
+    name: "Booklover Platinum",
+    price: "₹1,51,000",
+    originalPrice: "₹1,65,000",
+    icon: Star,
     popular: false,
     featured: true,
-    color: "purple",
-    description: "Premium package with exclusive benefits.",
+    color: "platinum",
+    description: "Ultimate publishing experience with luxury features.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: true },
       { text: "Publishing Consultant", included: true },
       { text: "Publishing Manager", included: true },
       { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
-      { text: "Paperback Printing", included: "conditional", note: "5 Author Copies, Regular Print Quality, Good Lamination, A1 Grade Paper, Paperback format, Amazon Kindle ebook" },
+      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Luxury), Formatting: Premium, Illustration: Unlimited, Editing: Professional" },
+      { text: "Paperback Printing", included: "conditional", note: "50 Author Copies, Luxury Print Quality, Premium Lamination, Luxury Paper, Hardcover included" },
     ],
-    additionalFeatures: 6,
-    timeline: "4-5 weeks",
+    additionalFeatures: 12,
+    timeline: "8-10 weeks",
+    support: "Dedicated Account Manager + 24/7 Priority Support",
+    copies: "50 Author Copies",
+    freeBenefit: "₹14,000",
+  },
+  {
+    name: "Booklover Display Gold",
+    price: "₹91,000",
+    originalPrice: "₹1,05,000",
+    icon: Gem,
+    popular: false,
+    featured: true,
+    color: "yellow",
+    description: "Premium display and marketing package.",
+    features: [
+      { text: "Copyright / ISBN / Barcode", included: true },
+      { text: "Publishing Consultant", included: true },
+      { text: "Publishing Manager", included: true },
+      { text: "Marketing Assistance", included: true },
+      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Premium, Illustration: Included, Editing: Professional" },
+      { text: "Paperback Printing", included: "conditional", note: "15 Author Copies, Premium Print Quality, Premium Lamination, Premium Paper" },
+    ],
+    additionalFeatures: 7,
+    timeline: "5-6 weeks",
     support: "Dedicated Manager",
-    copies: "5 Author Copies",
-    freeBenefit: "₹5,900",
+    copies: "15 Author Copies",
+    freeBenefit: "₹14,000",
+  },
+  {
+    name: "Booklover Silver",
+    price: "₹51,999",
+    originalPrice: "₹65,000",
+    icon: Shield,
+    popular: false,
+    featured: false,
+    color: "gray",
+    description: "Reliable package for serious authors.",
+    features: [
+      { text: "Copyright / ISBN / Barcode", included: true },
+      { text: "Publishing Consultant", included: true },
+      { text: "Publishing Manager", included: true },
+      { text: "Marketing Assistance", included: true },
+      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Standard), Formatting: Regular, Illustration: Extra Charge, Editing: Standard" },
+      { text: "Paperback Printing", included: "conditional", note: "10 Author Copies, Standard Print Quality, Standard Lamination, Standard Paper" },
+    ],
+    additionalFeatures: 5,
+    timeline: "4-5 weeks",
+    support: "Email & Phone Support",
+    copies: "10 Author Copies",
+  },
+  {
+    name: "Elite++",
+    price: "₹33,999",
+    originalPrice: "₹45,000",
+    icon: Sparkles,
+    popular: false,
+    featured: true,
+    color: "indigo",
+    description: "Advanced package with premium features.",
+    features: [
+      { text: "Copyright / ISBN / Barcode", included: true },
+      { text: "Publishing Consultant", included: true },
+      { text: "Publishing Manager", included: true },
+      { text: "Marketing Assistance", included: true },
+      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Premium, Illustration: Included, Editing: Professional" },
+      { text: "Paperback Printing", included: "conditional", note: "30 Author Copies, Premium Print Quality, Premium Lamination, Premium Paper, Hardcover option available" },
+    ],
+    additionalFeatures: 10,
+    timeline: "6-8 weeks",
+    support: "Dedicated Account Manager + Priority Support",
+    copies: "30 Author Copies",
+    freeBenefit: "₹11,001",
   },
   {
     name: "Booklover Big Book Box",
@@ -95,108 +119,84 @@ const packages = [
     freeBenefit: "₹9,440",
   },
   {
-    name: "Elite++",
-    price: "₹25,999",
-    originalPrice: "₹35,999",
-    icon: Sparkles,
+    name: "Booklover Elite",
+    price: "₹14,999",
+    originalPrice: "₹20,899",
+    icon: Award,
     popular: false,
     featured: true,
-    color: "indigo",
-    description: "Advanced package with premium features.",
+    color: "purple",
+    description: "Premium package with exclusive benefits.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: true },
       { text: "Publishing Consultant", included: true },
       { text: "Publishing Manager", included: true },
       { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Premium, Illustration: Included, Editing: Professional" },
-      { text: "Paperback Printing", included: "conditional", note: "30 Author Copies, Premium Print Quality, Premium Lamination, Premium Paper, Hardcover option available" },
+      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
+      { text: "Paperback Printing", included: "conditional", note: "5 Author Copies, Regular Print Quality, Good Lamination, A1 Grade Paper, Paperback format, Amazon Kindle ebook" },
     ],
-    additionalFeatures: 10,
-    timeline: "6-8 weeks",
-    support: "Dedicated Account Manager + Priority Support",
-    copies: "30 Author Copies",
-    freeBenefit: "₹10,000",
+    additionalFeatures: 6,
+    timeline: "4-5 weeks",
+    support: "Dedicated Manager",
+    copies: "5 Author Copies",
+    freeBenefit: "₹5,900",
   },
   {
-    name: "Booklover Silver",
-    price: "₹12,999",
+    name: "Welcome Booklover",
+    price: "₹8,999",
     originalPrice: null,
-    icon: Shield,
+    icon: BookOpen,
     popular: false,
     featured: false,
-    color: "gray",
-    description: "Reliable package for serious authors.",
+    color: "green",
+    description: "Perfect starting package for new authors.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: true },
       { text: "Publishing Consultant", included: true },
       { text: "Publishing Manager", included: true },
       { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Standard), Formatting: Regular, Illustration: Extra Charge, Editing: Standard" },
-      { text: "Paperback Printing", included: "conditional", note: "10 Author Copies, Standard Print Quality, Standard Lamination, Standard Paper" },
+      { text: "Add-on Services", included: "conditional", note: "Book Cover Design, Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
+      { text: "Paperback Printing", included: false },
     ],
-    additionalFeatures: 5,
-    timeline: "4-5 weeks",
+    additionalFeatures: 4,
+    timeline: "3-4 weeks",
     support: "Email & Phone Support",
-    copies: "10 Author Copies",
+    copies: "Not included",
   },
   {
-    name: "Booklover Display Gold",
-    price: "₹18,999",
-    originalPrice: "₹25,999",
-    icon: Gem,
+    name: "Help Booklover",
+    price: "₹5,000",
+    originalPrice: null,
+    icon: Heart,
     popular: false,
-    featured: true,
-    color: "yellow",
-    description: "Premium display and marketing package.",
+    featured: false,
+    color: "blue",
+    description: "This package is for additional help authors are looking for.",
     features: [
-      { text: "Copyright / ISBN / Barcode", included: true },
+      { text: "Copyright / ISBN / Barcode", included: false },
       { text: "Publishing Consultant", included: true },
-      { text: "Publishing Manager", included: true },
+      { text: "Publishing Manager", included: "conditional", note: "If required" },
       { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Premium, Illustration: Included, Editing: Professional" },
-      { text: "Paperback Printing", included: "conditional", note: "15 Author Copies, Premium Print Quality, Premium Lamination, Premium Paper" },
+      { text: "Add-on Services", included: false },
+      { text: "Paperback Printing", included: false },
     ],
-    additionalFeatures: 7,
-    timeline: "5-6 weeks",
-    support: "Dedicated Manager",
-    copies: "15 Author Copies",
-    freeBenefit: "₹7,000",
-  },
-  {
-    name: "Booklover Platinum",
-    price: "₹35,999",
-    originalPrice: "₹45,999",
-    icon: Star,
-    popular: false,
-    featured: true,
-    color: "platinum",
-    description: "Ultimate publishing experience with luxury features.",
-    features: [
-      { text: "Copyright / ISBN / Barcode", included: true },
-      { text: "Publishing Consultant", included: true },
-      { text: "Publishing Manager", included: true },
-      { text: "Marketing Assistance", included: true },
-      { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Luxury), Formatting: Premium, Illustration: Unlimited, Editing: Professional" },
-      { text: "Paperback Printing", included: "conditional", note: "50 Author Copies, Luxury Print Quality, Premium Lamination, Luxury Paper, Hardcover included" },
-    ],
-    additionalFeatures: 12,
-    timeline: "8-10 weeks",
-    support: "Dedicated Account Manager + 24/7 Priority Support",
-    copies: "50 Author Copies",
-    freeBenefit: "₹10,000",
+    additionalFeatures: 3,
+    timeline: "2-3 weeks",
+    support: "Email Support",
+    copies: "Not included",
   },
 ]
 
 const getColorClasses = (color: string) => {
   const colorMap: { [key: string]: { bg: string; text: string; border: string; icon: string } } = {
-    blue: { bg: "bg-blue-500", text: "text-blue-500", border: "border-blue-200", icon: "bg-blue-100 text-blue-600" },
-    green: { bg: "bg-green-500", text: "text-green-500", border: "border-green-200", icon: "bg-green-100 text-green-600" },
-    purple: { bg: "bg-purple-500", text: "text-purple-500", border: "border-purple-200", icon: "bg-purple-100 text-purple-600" },
-    orange: { bg: "bg-orange-500", text: "text-orange-500", border: "border-orange-200", icon: "bg-orange-100 text-orange-600" },
-    indigo: { bg: "bg-indigo-500", text: "text-indigo-500", border: "border-indigo-200", icon: "bg-indigo-100 text-indigo-600" },
-    gray: { bg: "bg-gray-500", text: "text-gray-500", border: "border-gray-200", icon: "bg-gray-100 text-gray-600" },
-    yellow: { bg: "bg-yellow-500", text: "text-yellow-500", border: "border-yellow-200", icon: "bg-yellow-100 text-yellow-600" },
-    platinum: { bg: "bg-gradient-to-r from-gray-400 to-gray-600", text: "text-gray-600", border: "border-gray-200", icon: "bg-gray-100 text-gray-600" },
+    blue: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    green: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    purple: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    orange: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    indigo: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    gray: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    yellow: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    platinum: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
   }
   return colorMap[color] || colorMap.blue
 }
@@ -231,7 +231,7 @@ export default function PackageComparisonPage() {
                 {/* Popular Badge */}
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <Badge className="bg-orange-500 text-white px-4 py-1 text-sm font-semibold">
+                    <Badge className="bg-red-600 text-white px-4 py-1 text-sm font-semibold">
                       MOST POPULAR
                     </Badge>
                   </div>
@@ -240,7 +240,7 @@ export default function PackageComparisonPage() {
                 {/* Featured Badge */}
                 {pkg.featured && !pkg.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <Badge className="bg-purple-500 text-white px-4 py-1 text-sm font-semibold">
+                    <Badge className="bg-red-600 text-white px-4 py-1 text-sm font-semibold">
                       FEATURED
                     </Badge>
                   </div>
@@ -318,7 +318,7 @@ export default function PackageComparisonPage() {
                     
                     {pkg.additionalFeatures > 0 && (
                       <div className="pt-2">
-                        <button className="text-sm text-blue-600 hover:text-blue-800 font-medium">
+                        <button className="text-sm text-red-600 hover:text-red-800 font-medium">
                           +{pkg.additionalFeatures} more features
                         </button>
                       </div>
@@ -345,9 +345,9 @@ export default function PackageComparisonPage() {
                   <Button
                     className={`w-full ${
                       pkg.popular
-                        ? 'bg-orange-500 hover:bg-orange-600 text-white' 
+                        ? 'bg-red-600 hover:bg-red-700 text-white' 
                         : pkg.featured 
-                        ? 'bg-purple-500 hover:bg-purple-600 text-white'
+                        ? 'bg-red-600 hover:bg-red-700 text-white'
                         : `${colors.bg} hover:opacity-90 text-white`
                     }`}
                   >
@@ -362,28 +362,28 @@ export default function PackageComparisonPage() {
         {/* Additional Information Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <Card className="border-gray-200 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100">
+            <CardHeader className="bg-gradient-to-r from-red-50 to-red-100">
               <CardTitle className="text-gray-800 flex items-center gap-2">
-                <Zap className="h-5 w-5 text-blue-600" />
+                <Zap className="h-5 w-5 text-red-600" />
                 Payment Options
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Full payment upfront
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   50% advance, 50% on completion
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   EMI options available
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Corporate packages available
                 </li>
               </ul>
@@ -391,28 +391,28 @@ export default function PackageComparisonPage() {
           </Card>
 
           <Card className="border-gray-200 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-green-50 to-green-100">
+            <CardHeader className="bg-gradient-to-r from-red-50 to-red-100">
               <CardTitle className="text-gray-800 flex items-center gap-2">
-                <Clock className="h-5 w-5 text-green-600" />
+                <Clock className="h-5 w-5 text-red-600" />
                 Timeline Details
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Timeline starts after content approval
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Rush delivery available (+20% cost)
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Regular updates provided
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Milestone-based delivery
                 </li>
               </ul>
@@ -420,28 +420,28 @@ export default function PackageComparisonPage() {
               </Card>
 
           <Card className="border-gray-200 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100">
+            <CardHeader className="bg-gradient-to-r from-red-50 to-red-100">
               <CardTitle className="text-gray-800 flex items-center gap-2">
-                <Heart className="h-5 w-5 text-purple-600" />
+                <Heart className="h-5 w-5 text-red-600" />
                 Support Included
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   6 months post-launch support
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Technical assistance
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Marketing guidance
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-green-600" />
+                  <Check className="h-4 w-4 text-red-600" />
                   Sales reporting
                 </li>
               </ul>
