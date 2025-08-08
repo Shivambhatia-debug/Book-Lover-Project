@@ -1,7 +1,11 @@
+"use client"
+
+import { useState } from "react"
 import { X, BookOpen, Award, Gem, Shield, Heart, Sparkles, Clock, Check, Star, Zap, Crown, RefreshCw } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import PaymentGateway from "@/components/PaymentGateway"
 
 const packages = [
   {
@@ -202,6 +206,27 @@ const getColorClasses = (color: string) => {
 }
 
 export default function PackageComparisonPage() {
+  const [paymentOpen, setPaymentOpen] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState<any>(null)
+
+  const handleBuyNow = (pkg: any) => {
+    const paymentPackage = {
+      id: pkg.name.replace(/\s+/g, '-').toLowerCase(),
+      name: pkg.name,
+      price: pkg.price,
+      originalPrice: pkg.originalPrice,
+      description: pkg.description,
+      features: pkg.features.filter((f: any) => f.included === true).map((f: any) => f.text)
+    }
+    setSelectedPackage(paymentPackage)
+    setPaymentOpen(true)
+  }
+
+  const handlePaymentSuccess = () => {
+    setPaymentOpen(false)
+    setSelectedPackage(null)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -343,6 +368,7 @@ export default function PackageComparisonPage() {
 
                   {/* CTA Button */}
                   <Button
+                    onClick={() => handleBuyNow(pkg)}
                     className={`w-full ${
                       pkg.popular
                         ? 'bg-red-600 hover:bg-red-700 text-white' 
@@ -351,7 +377,7 @@ export default function PackageComparisonPage() {
                         : `${colors.bg} hover:opacity-90 text-white`
                     }`}
                   >
-                    Buy Now
+                    Buy Now - {pkg.price}
                   </Button>
                 </CardContent>
               </Card>
@@ -416,8 +442,8 @@ export default function PackageComparisonPage() {
                   Milestone-based delivery
                 </li>
               </ul>
-                </CardContent>
-              </Card>
+            </CardContent>
+          </Card>
 
           <Card className="border-gray-200 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-red-50 to-red-100">
@@ -470,6 +496,14 @@ export default function PackageComparisonPage() {
           </div>
         </div>
       </div>
+
+      {/* Payment Gateway */}
+      <PaymentGateway
+        isOpen={paymentOpen}
+        onClose={() => setPaymentOpen(false)}
+        selectedPackage={selectedPackage}
+        onSuccess={handlePaymentSuccess}
+      />
     </div>
   )
-}
+} 

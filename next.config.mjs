@@ -33,8 +33,6 @@ const nextConfig = {
   generateEtags: false,
   // Enable static optimization
   trailingSlash: false,
-  // Optimize for production
-  swcMinify: true,
   // Enable modern JavaScript features
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

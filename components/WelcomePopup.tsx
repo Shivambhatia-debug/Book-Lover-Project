@@ -7,8 +7,10 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function WelcomePopup() {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     // Show popup after 1 second when page loads
     const timer = setTimeout(() => {
       setIsOpen(true)
@@ -17,7 +19,7 @@ export default function WelcomePopup() {
     return () => clearTimeout(timer)
   }, [])
 
-  if (!isOpen) return null
+  if (!mounted || !isOpen) return null
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">

@@ -1,0 +1,5 @@
+[33md1b40d7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Update package pricing and arrange in descending order: Platinum ₹1,51,000, Gold ₹91,000, Silver ₹51,999, Elite++ ₹33,999
+[33m2a895fa[m Add publishing packages pages and update existing components
+[33m1d1c534[m Production Ready
+[33mbb6e2ba[m Production
+[33mee539ba[m feat: Implement new publishing packages page layout - Redesigned the publishing packages page to display each package as a horizontal section with the image on the left and details on the right, as per user request. Removed the previous card/grid layout. Also updated the 'Register Now' button on the book fairs page to link to this new packages page.

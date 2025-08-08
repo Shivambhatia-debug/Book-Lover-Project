@@ -107,31 +107,31 @@ export default function Hero() {
                     Browse Books
                   </Button>
                 </Link>
-                <Link href="/author-dashboard">
+                <Link href="/book-fairs">
                   <Button
                     size="lg"
                     variant="outline"
                     className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-transparent backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    Start Publishing
+                    Book Fairs
                   </Button>
                 </Link>
               </div>
 
-              {/* Free Publishing CTA */}
+              {/* Publishing CTA */}
               <div className="bg-gradient-to-r from-red-600/90 to-red-700/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-red-400/30 shadow-xl">
                 <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                  📚 List Your Book for FREE!
+                  📚 Publish your book with the Best Experts
                 </h3>
                 <p className="text-sm sm:text-lg text-red-100 mb-2 sm:mb-4">
-                  Join our community of successful authors and start your publishing journey
+                  Publish and be a part of this amazing Booklover Family
                 </p>
-                <Link href="/list-book-free">
+                <Link href="/publish-now">
                   <Button
                     size="lg"
                     className="w-full sm:w-auto bg-white text-red-600 hover:bg-red-50 px-6 sm:px-8 py-3 sm:py-4 text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    🚀 START PUBLISHING FOR FREE
+                    Publish Now
                   </Button>
                 </Link>
               </div>

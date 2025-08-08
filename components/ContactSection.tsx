@@ -1,10 +1,41 @@
 "use client"
 
+import { useState } from "react"
 import { Phone, Mail, MessageCircle, MapPin, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import PaymentGateway from "@/components/PaymentGateway"
 
 export default function ContactSection() {
+  const [paymentOpen, setPaymentOpen] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState<any>(null)
+
+  const handleStartPublishing = () => {
+    const defaultPackage = {
+      id: "premium-publishing",
+      name: "Premium Publishing Package",
+      price: "₹25,000",
+      originalPrice: "₹35,000",
+      description: "Most popular choice - Complete publishing solution with professional editing and marketing",
+      features: [
+        "Professional Editing & Proofreading",
+        "Premium Cover Design",
+        "ISBN Registration & Barcode",
+        "Print Publishing (100 copies)",
+        "Digital Publishing",
+        "Marketing Support",
+        "Book Fair Participation"
+      ]
+    }
+    setSelectedPackage(defaultPackage)
+    setPaymentOpen(true)
+  }
+
+  const handlePaymentSuccess = () => {
+    setPaymentOpen(false)
+    setSelectedPackage(null)
+  }
+
   return (
     <section id="contact-section" className="py-10 md:py-16 bg-gradient-to-br from-red-50 to-cream-100">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
@@ -30,6 +61,7 @@ export default function ContactSection() {
                     <Button
                       className="mt-1 sm:mt-2 bg-green-600 hover:bg-green-700 text-white w-full sm:w-auto"
                       onClick={() => window.open("https://wa.me/9142994429", "_blank")}
+                      suppressHydrationWarning
                     >
                       Chat on WhatsApp
                     </Button>
@@ -80,9 +112,10 @@ export default function ContactSection() {
                     <Button
                       variant="outline"
                       className="mt-1 sm:mt-2 border-purple-300 text-purple-600 hover:bg-purple-50 bg-transparent w-full sm:w-auto"
-                      onClick={() => window.open("https://instagram.com/booklover", "_blank")}
+                      onClick={() => window.open("https://instagram.com/booklover_publishing", "_blank")}
+                      suppressHydrationWarning
                     >
-                      Follow @booklover
+                      Follow @booklover_publishing        
                     </Button>
                   </div>
                 </div>
@@ -128,7 +161,11 @@ export default function ContactSection() {
                   Join 300+ successful authors who chose Book Lover for their publishing journey.
                 </p>
                 <div className="space-y-2 sm:space-y-3">
-                  <Button size="lg" className="w-full bg-white text-red-600 hover:bg-red-50">
+                  <Button 
+                    onClick={handleStartPublishing}
+                    size="lg" 
+                    className="w-full bg-white text-red-600 hover:bg-red-50"
+                  >
                     <Send className="h-5 w-5 mr-2" />
                     Start Publishing Now
                   </Button>
@@ -141,6 +178,7 @@ export default function ContactSection() {
                       size="lg"
                       variant="outline"
                       className="w-full border-white text-white hover:bg-white hover:text-red-600 bg-transparent"
+                      suppressHydrationWarning
                     >
                       Download Brochure
                     </Button>
@@ -151,6 +189,14 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+      {/* Payment Gateway */}
+      <PaymentGateway
+        isOpen={paymentOpen}
+        onClose={() => setPaymentOpen(false)}
+        selectedPackage={selectedPackage}
+        onSuccess={handlePaymentSuccess}
+      />
     </section>
   )
 }
