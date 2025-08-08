@@ -20,22 +20,22 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="hover:text-red-600 transition-colors font-medium">
+            <Link href="/" className="hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
               Home
             </Link>
-            <Link href="/books" className="hover:text-red-600 transition-colors font-medium">
+            <Link href="/books" className="hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
               Books
             </Link>
-            <Link href="/authors" className="hover:text-red-600 transition-colors font-medium">
+            <Link href="/authors" className="hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
               Authors
             </Link>
-            <Link href="/book-fairs" className="hover:text-red-600 transition-colors font-medium">
+            <Link href="/book-fairs" className="hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
               Book Fairs
             </Link>
-            <Link href="/packages" className="hover:text-red-600 transition-colors font-medium">
+            <Link href="/packages" className="hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
               Publishing Packages
             </Link>
-            <Link href="/about" className="hover:text-red-600 transition-colors font-medium">
+            <Link href="/about" className="hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
               About Us
             </Link>
           </div>
@@ -48,7 +48,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <CartDrawer className="text-black-800" />
-            <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-black-800">
+            <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-black-800" suppressHydrationWarning>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -58,22 +58,22 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fff] border-t border-gray-200 shadow-lg">
-              <Link href="/" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
+              <Link href="/" className="block px-3 py-2 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
                 Home
               </Link>
-              <Link href="/books" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
+              <Link href="/books" className="block px-3 py-2 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
                 Books
               </Link>
-              <Link href="/authors" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
+              <Link href="/authors" className="block px-3 py-2 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
                 Authors
               </Link>
-              <Link href="/book-fairs" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
+              <Link href="/book-fairs" className="block px-3 py-2 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
                 Book Fairs
               </Link>
-              <Link href="/packages" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
+              <Link href="/packages" className="block px-3 py-2 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
                 Publishing Packages
               </Link>
-              <Link href="/about" className="block px-3 py-2 hover:text-red-600 transition-colors font-medium">
+              <Link href="/about" className="block px-3 py-2 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:bg-clip-text hover:text-transparent transition-all duration-300 font-medium">
                 About Us
               </Link>
             </div>

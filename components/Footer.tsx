@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -19,6 +19,14 @@ export default function Footer() {
               <Twitter className="h-5 w-5 text-cream-300 hover:text-amber-400 cursor-pointer transition-colors" />
               <Instagram className="h-5 w-5 text-cream-300 hover:text-amber-400 cursor-pointer transition-colors" />
               <Linkedin className="h-5 w-5 text-cream-300 hover:text-amber-400 cursor-pointer transition-colors" />
+              <a 
+                href="https://www.youtube.com/@bookloverpublishinghouse5018" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-cream-300 hover:text-amber-400 transition-colors"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
@@ -101,6 +109,17 @@ export default function Footer() {
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 text-amber-400 mr-3" />
                 <span className="text-cream-200">Mumbai, Maharashtra, India</span>
+              </div>
+              <div className="flex items-center">
+                <Youtube className="h-5 w-5 text-amber-400 mr-3" />
+                <a 
+                  href="https://www.youtube.com/@bookloverpublishinghouse5018" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-cream-200 hover:text-amber-400 transition-colors"
+                >
+                  YouTube Channel
+                </a>
               </div>
             </div>
           </div>

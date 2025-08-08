@@ -1,6 +1,7 @@
 import { BookOpen, Users, Award, Globe, Zap, Heart, Target, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const services = [
   {
@@ -52,15 +53,63 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-cream-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
+        {/* New Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-black-800 mb-6">
-            About <span className="text-red-600">Book Lover</span> Publishing
-          </h1>
-          <p className="text-xl text-black-600 max-w-3xl mx-auto leading-relaxed">
-            India's premier publishing house dedicated to transforming manuscripts into bestsellers. We've been helping
-            authors achieve their publishing dreams since 2020.
+          <div className="flex flex-col items-center mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-black-800 leading-tight">
+              <div className="mb-2">
+                <span className="text-black">We</span>{" "}
+                <span className="text-red-600 font-bold">WRITE</span>
+              </div>
+              <div className="mb-2">
+                <span className="text-black">We</span>{" "}
+                <span className="text-red-600 font-bold">PUBLISH</span>
+              </div>
+              <div>
+                <span className="text-black">We</span>{" "}
+                <span className="text-red-600 font-bold">CELEBRATE</span>
+              </div>
+            </h1>
+          </div>
+          <p className="text-xl text-black-600 max-w-4xl mx-auto leading-relaxed mb-12">
+            Join the Booklover journey, and you'll feel like part of an amazing literary family — one that proudly represents India and Indian literature on the global map.
           </p>
+        </div>
+
+        {/* Kumar Nikhil Section */}
+        <div className="mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-black-800 mb-6">
+                Meet Kumar Nikhil – The Heart Behind Booklover Publishing House
+              </h2>
+              <div className="space-y-4 text-black-600 leading-relaxed">
+                <p>
+                  In every family, there's always that one person who brings everyone together with boundless passion, vision, and a touch of magic. In the Booklover Family, that person is fondly known as the "Director Booklover" – and that's Kumar Nikhil.
+                </p>
+                <p>
+                  A young and driven literary enthusiast, Kumar Nikhil is the founder and director of Booklover Publishing House, a platform born out of his deep-rooted love for stories and a powerful dream — to take Indian literature to the world stage. From bustling book festivals to international literary expos, Nikhil has been at the forefront, passionately representing Indian authors and bridging the gap between local voices and global audiences.
+                </p>
+                <p>
+                  His energy is infectious, his vision is clear — to create a space where every author feels celebrated, every book finds its reader, and Indian literature reaches new heights of recognition.
+                </p>
+                <p>
+                  Whether it's launching debut writers, curating international showcases, or personally connecting with readers and creators alike, Kumar Nikhil is not just building a publishing house — he's nurturing a movement.
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <Image
+                  src="/images/nikhil.jpg"
+                  alt="Kumar Nikhil - Director Booklover"
+                  width={400}
+                  height={500}
+                  className="rounded-lg shadow-xl object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Mission & Vision */}

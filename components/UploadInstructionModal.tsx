@@ -150,7 +150,7 @@ export default function UploadInstructionModal({ isOpen, onClose, onContinue, fi
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
             <Button
               onClick={onContinue}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white"
+                              className="flex-1 bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white"
             >
               Got It, Continue Upload
             </Button>

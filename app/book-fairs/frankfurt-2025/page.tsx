@@ -79,8 +79,8 @@ const getColorClasses = (color: string) => {
       }
     case "red":
       return {
-        bg: "bg-red-600",
-        hover: "hover:bg-red-700",
+        bg: "bg-gradient-to-r from-red-600 to-black-800",
+        hover: "hover:from-red-700 hover:to-black-900",
         border: "border-red-200",
         text: "text-red-600",
         bgLight: "bg-red-50"

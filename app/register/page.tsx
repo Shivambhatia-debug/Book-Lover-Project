@@ -165,7 +165,7 @@ export default function RegisterPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white py-3 text-lg font-semibold"
+                className="w-full bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white py-3 text-lg font-semibold"
                 disabled={!formData.agreeTerms}
               >
                 Create Author Account

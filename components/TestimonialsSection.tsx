@@ -138,7 +138,7 @@ export default function TestimonialsSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex ? "bg-red-400" : "bg-white/30"}`}
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex ? "bg-gradient-to-r from-red-600 to-black-800" : "bg-white/30"}`}
                   suppressHydrationWarning
                 />
               ))}

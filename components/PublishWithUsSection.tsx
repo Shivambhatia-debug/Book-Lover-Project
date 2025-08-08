@@ -183,7 +183,7 @@ export default function PublishWithUsSection() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 w-full sm:w-auto bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Send className="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2" />
                     {isSubmitting ? "Submitting..." : "Submit"}
@@ -192,7 +192,7 @@ export default function PublishWithUsSection() {
                     type="button"
                     onClick={scrollToContact}
                     variant="outline"
-                    className="flex-1 w-full sm:w-auto border-red-600 text-red-600 hover:bg-red-600 hover:text-white py-2 sm:py-3 text-base sm:text-lg font-semibold bg-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="flex-1 w-full sm:w-auto border-red-600 text-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:text-white py-2 sm:py-3 text-base sm:text-lg font-semibold bg-white shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Phone className="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2" />
                     Contact Us

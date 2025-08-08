@@ -141,7 +141,7 @@ export default function PackageComparisonPage() {
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-red-500 text-white px-4 py-1">Most Popular</Badge>
+                    <Badge className="bg-gradient-to-r from-red-600 to-black-800 text-white px-4 py-1">Most Popular</Badge>
                   </div>
                 )}
 
@@ -157,7 +157,7 @@ export default function PackageComparisonPage() {
                 <CardContent className="text-center">
                   <Button
                     className={`w-full mb-4 ${
-                      pkg.popular ? "bg-red-600 hover:bg-red-700" : "bg-black-800 hover:bg-black-700"
+                      pkg.popular ? "bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900" : "bg-black-800 hover:bg-black-700"
                     }`}
                   >
                     Choose Package

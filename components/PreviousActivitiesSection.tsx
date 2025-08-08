@@ -8,7 +8,7 @@ const achievements = [
     label: "Books Published",
     description: "Successfully published across various genres",
     color: "text-red-600",
-    bgColor: "bg-red-100",
+    bgColor: "bg-gradient-to-r from-red-600 to-black-800",
   },
   {
     icon: Users,
@@ -28,19 +28,11 @@ const achievements = [
   },
   {
     icon: Globe,
-    number: "25+",
+    number: "195+",
     label: "Countries Reached",
     description: "International distribution network",
     color: "text-green-600",
     bgColor: "bg-green-100",
-  },
-  {
-    icon: TrendingUp,
-    number: "₹2 Cr+",
-    label: "Revenue Generated",
-    description: "Total revenue for our authors",
-    color: "text-purple-600",
-    bgColor: "bg-purple-100",
   },
   {
     icon: Star,
@@ -54,7 +46,7 @@ const achievements = [
 
 export default function PreviousActivitiesSection() {
   return (
-    <section className="py-10 md:py-16 bg-gradient-to-br from-cream-50 to-red-50">
+    <section className="py-10 md:py-16 bg-gradient-to-br from-gray-50 to-red-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black-800 mb-2 sm:mb-4">🏆 Our Journey So Far</h2>
@@ -88,7 +80,7 @@ export default function PreviousActivitiesSection() {
         <div className="mt-10 md:mt-16">
           <h3 className="text-lg sm:text-3xl font-bold text-black-800 text-center mb-6 sm:mb-12">Our Milestones</h3>
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-red-200"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-red-600 to-black-800"></div>
             <div className="space-y-8 sm:space-y-12">
               {[
                 {
@@ -128,7 +120,7 @@ export default function PreviousActivitiesSection() {
                     </Card>
                   </div>
                   <div className="relative z-10 my-2 sm:my-0">
-                    <div className="w-3 sm:w-4 h-3 sm:h-4 bg-red-600 rounded-full border-2 sm:border-4 border-white shadow-lg"></div>
+                    <div className="w-3 sm:w-4 h-3 sm:h-4 bg-gradient-to-r from-red-600 to-black-800 rounded-full border-2 sm:border-4 border-white shadow-lg"></div>
                   </div>
                   <div className="w-full sm:w-1/2"></div>
                 </div>

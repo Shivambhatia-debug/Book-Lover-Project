@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Phone, Mail, MessageCircle, MapPin, Clock, Send } from "lucide-react"
+import { Phone, Mail, MessageCircle, MapPin, Clock, Send, Youtube } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import PaymentGateway from "@/components/PaymentGateway"
@@ -88,8 +88,8 @@ export default function ContactSection() {
             <Card className="border-red-200 hover:shadow-lg transition-shadow">
               <CardContent className="p-4 sm:p-6">
                 <div className="flex items-center space-x-2 sm:space-x-4">
-                  <div className="bg-red-100 p-2 sm:p-3 rounded-full">
-                    <Mail className="h-5 sm:h-6 w-5 sm:w-6 text-red-600" />
+                  <div className="bg-gradient-to-r from-red-600 to-black-800 p-2 sm:p-3 rounded-full">
+                    <Mail className="h-5 sm:h-6 w-5 sm:w-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-base sm:text-lg font-semibold text-black-800">Email</h3>
@@ -121,12 +121,34 @@ export default function ContactSection() {
                 </div>
               </CardContent>
             </Card>
+
+            <Card className="border-red-200 hover:shadow-lg transition-shadow">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex items-center space-x-2 sm:space-x-4">
+                  <div className="bg-gradient-to-r from-red-600 to-black-800 p-2 sm:p-3 rounded-full">
+                    <Youtube className="h-5 sm:h-6 w-5 sm:w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold text-black-800">YouTube Channel</h3>
+                    <p className="text-xs sm:text-base text-black-600">Watch our publishing tips and author stories</p>
+                    <Button
+                      variant="outline"
+                      className="mt-1 sm:mt-2 border-red-300 text-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:text-white bg-transparent w-full sm:w-auto"
+                      onClick={() => window.open("https://www.youtube.com/@bookloverpublishinghouse5018", "_blank")}
+                      suppressHydrationWarning
+                    >
+                      Subscribe to Our Channel
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Office Information */}
           <div className="space-y-4 sm:space-y-6">
             <Card className="border-red-200">
-              <CardHeader className="bg-red-50">
+              <CardHeader className="bg-gradient-to-r from-red-50 to-red-100">
                 <CardTitle className="flex items-center text-black-800 text-base sm:text-lg">
                   <MapPin className="h-4 sm:h-5 w-4 sm:w-5 mr-1 sm:mr-2 text-red-600" />
                   Our Office
@@ -165,6 +187,7 @@ export default function ContactSection() {
                     onClick={handleStartPublishing}
                     size="lg" 
                     className="w-full bg-white text-red-600 hover:bg-red-50"
+                    suppressHydrationWarning
                   >
                     <Send className="h-5 w-5 mr-2" />
                     Start Publishing Now

@@ -29,7 +29,7 @@ const nationalFairs = [
   },
   {
     id: 3,
-    city: "Coimbatore",
+    city: "Delhi",
     date: "To be announced",
     venue: "To be announced",
     image: "/images/blc5.jpg",
@@ -133,7 +133,7 @@ export default function BookFairsSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
+                  className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
                 >
                   <Link href="/book-fairs">
                     Register Now - National
@@ -194,7 +194,7 @@ export default function BookFairsSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
+                  className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold"
                 >
                   <Link href="/book-fairs/frankfurt-2025">
                     Register Now - International

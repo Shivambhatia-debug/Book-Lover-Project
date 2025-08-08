@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { toast } from "sonner"
-import { Share2, Star, ShoppingCart, BookOpen, Award, Users, Calendar, ExternalLink } from "lucide-react"
+import { Share2, Star, ShoppingCart, BookOpen, Award, Users, Calendar, ExternalLink, PenTool, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -390,6 +390,74 @@ export default function AuthorProfilePage({ params }: { params: { authorId: stri
               >
                 Follow Author
               </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Become an Author Section */}
+        <Card className="border-red-200 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg">
+          <CardContent className="p-8">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
+                <PenTool className="h-8 w-8 text-red-600" />
+              </div>
+              <h3 className="text-3xl font-bold text-black-800 mb-4">Become an Author</h3>
+              <p className="text-lg text-black-600 max-w-3xl mx-auto">
+                Inspired by {currentAuthorData.name}'s success? Start your own publishing journey with Book Lover. 
+                We provide comprehensive support to help you bring your stories to life.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="h-6 w-6 text-red-600" />
+                </div>
+                <h4 className="font-semibold text-black-800 mb-2">Professional Publishing</h4>
+                <p className="text-sm text-black-600">
+                  Get your book professionally edited, designed, and published with our expert team.
+                </p>
+              </div>
+
+              <div className="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-6 w-6 text-red-600" />
+                </div>
+                <h4 className="font-semibold text-black-800 mb-2">Global Distribution</h4>
+                <p className="text-sm text-black-600">
+                  Reach readers worldwide through our extensive distribution network and marketing support.
+                </p>
+              </div>
+
+              <div className="text-center p-6 bg-white rounded-lg shadow-sm">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="h-6 w-6 text-red-600" />
+                </div>
+                <h4 className="font-semibold text-black-800 mb-2">Author Support</h4>
+                <p className="text-sm text-black-600">
+                  Join our community of authors with dedicated support, workshops, and networking opportunities.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8">
+                  <PenTool className="h-5 w-5 mr-2" />
+                  Start Publishing Now
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-red-300 text-red-600 bg-transparent hover:bg-red-50"
+                >
+                  Learn More
+                </Button>
+              </div>
+              <p className="text-sm text-black-500 mt-4">
+                Join thousands of successful authors who have published with Book Lover
+              </p>
             </div>
           </CardContent>
         </Card>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { X, BookOpen, Award, Gem, Shield, Heart, Sparkles, Clock, Check, Star, Zap, Crown, RefreshCw } from "lucide-react"
+import { X, BookOpen, Award, Gem, Shield, Heart, Sparkles, Clock, Check, Star, Zap, Crown, RefreshCw, Plus, Minus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,7 +25,20 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Luxury), Formatting: Premium, Illustration: Unlimited, Editing: Professional" },
       { text: "Paperback Printing", included: "conditional", note: "50 Author Copies, Luxury Print Quality, Premium Lamination, Luxury Paper, Hardcover included" },
     ],
-    additionalFeatures: 12,
+    additionalFeatures: [
+      "Luxury manuscript editing with unlimited revisions",
+      "Premium book cover design with 3D effects",
+      "Author branding and personal website",
+      "International book tour planning",
+      "Media kit and press release creation",
+      "Reader engagement and fan club setup",
+      "Audiobook production and distribution",
+      "Merchandise design and production",
+      "Social media campaign management",
+      "Book launch event coordination",
+      "International distribution network",
+      "Royalty tracking and reporting"
+    ],
     timeline: "8-10 weeks",
     support: "Dedicated Account Manager + 24/7 Priority Support",
     copies: "50 Author Copies",
@@ -48,7 +61,15 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Premium, Illustration: Included, Editing: Professional" },
       { text: "Paperback Printing", included: "conditional", note: "15 Author Copies, Premium Print Quality, Premium Lamination, Premium Paper" },
     ],
-    additionalFeatures: 7,
+    additionalFeatures: [
+      "Professional manuscript editing",
+      "Premium book cover design",
+      "Author website creation",
+      "Press release and media kit",
+      "Book launch event planning",
+      "Social media marketing",
+      "Reader engagement strategies"
+    ],
     timeline: "5-6 weeks",
     support: "Dedicated Manager",
     copies: "15 Author Copies",
@@ -71,7 +92,13 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Standard), Formatting: Regular, Illustration: Extra Charge, Editing: Standard" },
       { text: "Paperback Printing", included: "conditional", note: "10 Author Copies, Standard Print Quality, Standard Lamination, Standard Paper" },
     ],
-    additionalFeatures: 5,
+    additionalFeatures: [
+      "Standard manuscript editing",
+      "Book cover design consultation",
+      "Author bio creation",
+      "Basic marketing guidance",
+      "Social media setup"
+    ],
     timeline: "4-5 weeks",
     support: "Email & Phone Support",
     copies: "10 Author Copies",
@@ -93,7 +120,18 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Premium, Illustration: Included, Editing: Professional" },
       { text: "Paperback Printing", included: "conditional", note: "30 Author Copies, Premium Print Quality, Premium Lamination, Premium Paper, Hardcover option available" },
     ],
-    additionalFeatures: 10,
+    additionalFeatures: [
+      "Advanced manuscript editing",
+      "Premium book cover design",
+      "Author interview setup",
+      "Book launch event planning",
+      "Media kit creation",
+      "Reader engagement strategies",
+      "Social media campaign",
+      "Book tour coordination",
+      "Audiobook guidance",
+      "International distribution"
+    ],
     timeline: "6-8 weeks",
     support: "Dedicated Account Manager + Priority Support",
     copies: "30 Author Copies",
@@ -116,7 +154,16 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Best, Illustration: Extra Charge, Editing: Essential" },
       { text: "Paperback Printing", included: "conditional", note: "20 Author Copies, Regular/Custom Print Quality, Best Lamination, Best Quality Paper, Paperback, ebook" },
     ],
-    additionalFeatures: 8,
+    additionalFeatures: [
+      "Comprehensive manuscript editing",
+      "Premium book cover design with unlimited revisions",
+      "Author branding strategy",
+      "Book tour planning",
+      "International distribution setup",
+      "Audiobook production guidance",
+      "Merchandise design",
+      "Fan club creation"
+    ],
     timeline: "5-6 weeks",
     support: "Dedicated Account Manager",
     copies: "20 Author Copies",
@@ -139,7 +186,14 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
       { text: "Paperback Printing", included: "conditional", note: "5 Author Copies, Regular Print Quality, Good Lamination, A1 Grade Paper, Paperback format, Amazon Kindle ebook" },
     ],
-    additionalFeatures: 6,
+    additionalFeatures: [
+      "Advanced manuscript editing",
+      "Premium book cover design",
+      "Author interview setup",
+      "Book launch event planning",
+      "Media kit creation",
+      "Reader engagement strategies"
+    ],
     timeline: "4-5 weeks",
     support: "Dedicated Manager",
     copies: "5 Author Copies",
@@ -162,7 +216,12 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design, Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
       { text: "Paperback Printing", included: false },
     ],
-    additionalFeatures: 4,
+    additionalFeatures: [
+      "Professional editing (basic)",
+      "Book cover design consultation",
+      "Author website setup",
+      "Press release creation"
+    ],
     timeline: "3-4 weeks",
     support: "Email & Phone Support",
     copies: "Not included",
@@ -184,7 +243,11 @@ const packages = [
       { text: "Add-on Services", included: false },
       { text: "Paperback Printing", included: false },
     ],
-    additionalFeatures: 3,
+    additionalFeatures: [
+      "Basic manuscript review",
+      "Author bio creation",
+      "Social media guidance"
+    ],
     timeline: "2-3 weeks",
     support: "Email Support",
     copies: "Not included",
@@ -193,14 +256,14 @@ const packages = [
 
 const getColorClasses = (color: string) => {
   const colorMap: { [key: string]: { bg: string; text: string; border: string; icon: string } } = {
-    blue: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    green: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    purple: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    orange: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    indigo: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    gray: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    yellow: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
-    platinum: { bg: "bg-gradient-to-br from-red-600 to-red-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    blue: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    green: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    purple: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    orange: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    indigo: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    gray: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    yellow: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    platinum: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
   }
   return colorMap[color] || colorMap.blue
 }
@@ -208,6 +271,7 @@ const getColorClasses = (color: string) => {
 export default function PackageComparisonPage() {
   const [paymentOpen, setPaymentOpen] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState<any>(null)
+  const [expandedFeatures, setExpandedFeatures] = useState<{ [key: string]: boolean }>({})
 
   const handleBuyNow = (pkg: any) => {
     const paymentPackage = {
@@ -225,6 +289,13 @@ export default function PackageComparisonPage() {
   const handlePaymentSuccess = () => {
     setPaymentOpen(false)
     setSelectedPackage(null)
+  }
+
+  const toggleFeatures = (packageName: string) => {
+    setExpandedFeatures(prev => ({
+      ...prev,
+      [packageName]: !prev[packageName]
+    }))
   }
 
   return (
@@ -245,6 +316,7 @@ export default function PackageComparisonPage() {
           {packages.map((pkg) => {
             const IconComponent = pkg.icon
             const colors = getColorClasses(pkg.color)
+            const isExpanded = expandedFeatures[pkg.name] || false
             
             return (
               <Card
@@ -256,7 +328,7 @@ export default function PackageComparisonPage() {
                 {/* Popular Badge */}
                 {pkg.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <Badge className="bg-red-600 text-white px-4 py-1 text-sm font-semibold">
+                    <Badge className="bg-gradient-to-r from-red-600 to-black-800 text-white px-4 py-1 text-sm font-semibold">
                       MOST POPULAR
                     </Badge>
                   </div>
@@ -265,7 +337,7 @@ export default function PackageComparisonPage() {
                 {/* Featured Badge */}
                 {pkg.featured && !pkg.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <Badge className="bg-red-600 text-white px-4 py-1 text-sm font-semibold">
+                    <Badge className="bg-gradient-to-r from-red-600 to-black-800 text-white px-4 py-1 text-sm font-semibold">
                       FEATURED
                     </Badge>
                   </div>
@@ -341,11 +413,37 @@ export default function PackageComparisonPage() {
                       </div>
                     ))}
                     
-                    {pkg.additionalFeatures > 0 && (
+                    {/* Additional Features Section */}
+                    {pkg.additionalFeatures && pkg.additionalFeatures.length > 0 && (
                       <div className="pt-2">
-                        <button className="text-sm text-red-600 hover:text-red-800 font-medium">
-                          +{pkg.additionalFeatures} more features
+                        <button
+                          onClick={() => toggleFeatures(pkg.name)}
+                          className="flex items-center gap-1 text-sm text-red-600 hover:text-red-800 font-medium cursor-pointer"
+                        >
+                          {isExpanded ? (
+                            <>
+                              <Minus className="h-3 w-3" />
+                              Hide {pkg.additionalFeatures.length} more features
+                            </>
+                          ) : (
+                            <>
+                              <Plus className="h-3 w-3" />
+                              +{pkg.additionalFeatures.length} more features
+                            </>
+                          )}
                         </button>
+                        
+                        {/* Expanded Additional Features */}
+                        {isExpanded && (
+                          <div className="mt-3 pl-4 space-y-2 border-l-2 border-red-200">
+                            {pkg.additionalFeatures.map((feature, index) => (
+                              <div key={index} className="flex items-start">
+                                <Check className="h-3 w-3 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                                <span className="text-xs text-gray-600 leading-relaxed">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -371,9 +469,9 @@ export default function PackageComparisonPage() {
                     onClick={() => handleBuyNow(pkg)}
                     className={`w-full ${
                       pkg.popular
-                        ? 'bg-red-600 hover:bg-red-700 text-white' 
+                        ? 'bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white' 
                         : pkg.featured 
-                        ? 'bg-red-600 hover:bg-red-700 text-white'
+                        ? 'bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white'
                         : `${colors.bg} hover:opacity-90 text-white`
                     }`}
                   >

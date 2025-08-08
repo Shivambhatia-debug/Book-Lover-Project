@@ -246,7 +246,7 @@ export default function BooksPage() {
                         alt={book.title}
                         width={400}
                         height={500}
-                        className="w-full h-80 object-cover bg-gray-100 hover:scale-105 transition-transform duration-300"
+                        className="w-full h-56 object-cover bg-gray-100 hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 left-2">
                         <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -327,7 +327,7 @@ export default function BooksPage() {
                         alt={book.title}
                         width={450}
                         height={550}
-                        className="w-full h-96 object-contain bg-white group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-56 md:h-72 object-cover bg-gray-100 group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 left-2">
                         <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
@@ -345,7 +345,7 @@ export default function BooksPage() {
 
                       <div className="flex items-center justify-between">
                         <span className="text-2xl font-bold text-black-800">₹{book.price}</span>
-                        <Button size="sm" className="bg-red-600 hover:bg-red-700" onClick={() => handleAddToCart(book)}>
+                        <Button size="sm" className="bg-red-600 hover:bg-red-700" onClick={() => handleAddToCart(book)} suppressHydrationWarning>
                           <ShoppingCart className="h-4 w-4 mr-1" />
                           Add to Cart
                         </Button>
@@ -379,7 +379,7 @@ export default function BooksPage() {
                           </div>
                           <div className="text-right">
                             <div className="text-2xl font-bold text-black-800 mb-2">₹{book.price}</div>
-                            <Button className="bg-red-600 hover:bg-red-700" onClick={() => handleAddToCart(book)}>
+                            <Button className="bg-red-600 hover:bg-red-700" onClick={() => handleAddToCart(book)} suppressHydrationWarning>
                               <ShoppingCart className="h-4 w-4 mr-2" />
                               Add to Cart
                             </Button>

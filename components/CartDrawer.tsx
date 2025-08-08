@@ -59,7 +59,7 @@ export default function CartDrawer() {
             <div className="flex flex-col items-center justify-center h-64 text-center">
               <ShoppingCart className="h-16 w-16 text-gray-300 mb-4" />
               <p className="text-gray-500 mb-4">Your cart is empty</p>
-              <Button onClick={() => setIsOpen(false)} className="bg-red-600 hover:bg-red-700">
+              <Button onClick={() => setIsOpen(false)} className="bg-red-600 hover:bg-red-700" suppressHydrationWarning>
                 Continue Shopping
               </Button>
             </div>
@@ -119,13 +119,14 @@ export default function CartDrawer() {
               <span className="text-xl font-bold text-red-600">₹{totalPrice.toLocaleString()}</span>
             </div>
             <div className="space-y-2">
-              <Button className="w-full bg-red-600 hover:bg-red-700" onClick={() => setIsOpen(false)}>
+              <Button className="w-full bg-red-600 hover:bg-red-700" onClick={() => setIsOpen(false)} suppressHydrationWarning>
                 Proceed to Checkout
               </Button>
               <Button
                 variant="outline"
                 className="w-full border-red-300 text-red-600 hover:bg-red-50 bg-transparent"
                 onClick={() => setIsOpen(false)}
+                suppressHydrationWarning
               >
                 Continue Shopping
               </Button>

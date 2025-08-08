@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link"
-import { Check, X, Heart, BookOpen, Award, Crown, Sparkles, Shield, Gem, Star, Zap, ArrowRight, RefreshCw } from "lucide-react"
+import { useState } from "react"
+import { Check, X, Heart, BookOpen, Award, Crown, Sparkles, Shield, Gem, Star, Zap, ArrowRight, RefreshCw, Plus, Minus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 
 const packages = [
   {
@@ -12,7 +16,7 @@ const packages = [
     icon: Heart,
     popular: false,
     featured: false,
-    color: "blue",
+    color: "red",
     description: "This package is for additional help authors are looking for.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: false },
@@ -22,7 +26,11 @@ const packages = [
       { text: "Add-on Services", included: false },
       { text: "Paperback Printing", included: false },
     ],
-    additionalFeatures: 3,
+    additionalFeatures: [
+      "Basic manuscript review",
+      "Author bio creation",
+      "Social media guidance"
+    ],
     timeline: "2-3 weeks",
     support: "Email Support",
     copies: "Not included",
@@ -34,7 +42,7 @@ const packages = [
     icon: BookOpen,
     popular: false,
     featured: false,
-    color: "green",
+    color: "burgundy",
     description: "Perfect starting package for new authors.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: true },
@@ -44,7 +52,12 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design, Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
       { text: "Paperback Printing", included: false },
     ],
-    additionalFeatures: 4,
+    additionalFeatures: [
+      "Professional editing (basic)",
+      "Book cover design consultation",
+      "Author website setup",
+      "Press release creation"
+    ],
     timeline: "3-4 weeks",
     support: "Email & Phone Support",
     copies: "Not included",
@@ -56,7 +69,7 @@ const packages = [
     icon: Award,
     popular: false,
     featured: true,
-    color: "purple",
+    color: "darkRed",
     description: "Premium package with exclusive benefits.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: true },
@@ -66,7 +79,14 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Regular, Illustration: Extra Charge, Editing: Basic" },
       { text: "Paperback Printing", included: "conditional", note: "5 Author Copies, Regular Print Quality, Good Lamination, A1 Grade Paper, Paperback format, Amazon Kindle ebook" },
     ],
-    additionalFeatures: 6,
+    additionalFeatures: [
+      "Advanced manuscript editing",
+      "Premium book cover design",
+      "Author interview setup",
+      "Book launch event planning",
+      "Media kit creation",
+      "Reader engagement strategies"
+    ],
     timeline: "4-5 weeks",
     support: "Dedicated Manager",
     copies: "5 Author Copies",
@@ -79,7 +99,7 @@ const packages = [
     icon: Crown,
     popular: true,
     featured: true,
-    color: "orange",
+    color: "crimson",
     description: "Our most comprehensive publishing solution.",
     features: [
       { text: "Copyright / ISBN / Barcode", included: true },
@@ -89,7 +109,16 @@ const packages = [
       { text: "Add-on Services", included: "conditional", note: "Book Cover Design (Premium), Formatting: Best, Illustration: Extra Charge, Editing: Essential" },
       { text: "Paperback Printing", included: "conditional", note: "20 Author Copies, Regular/Custom Print Quality, Best Lamination, Best Quality Paper, Paperback, ebook" },
     ],
-    additionalFeatures: 8,
+    additionalFeatures: [
+      "Comprehensive manuscript editing",
+      "Premium book cover design with unlimited revisions",
+      "Author branding strategy",
+      "Book tour planning",
+      "International distribution setup",
+      "Audiobook production guidance",
+      "Merchandise design",
+      "Fan club creation"
+    ],
     timeline: "5-6 weeks",
     support: "Dedicated Account Manager",
     copies: "20 Author Copies",
@@ -99,6 +128,10 @@ const packages = [
 
 const getColorClasses = (color: string) => {
   const colorMap: Record<string, { bg: string; text: string; border: string; icon: string }> = {
+    red: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    burgundy: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-200", icon: "bg-red-100 text-red-600" },
+    darkRed: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-300", icon: "bg-red-100 text-red-600" },
+    crimson: { bg: "bg-gradient-to-r from-red-600 to-black-800", text: "text-red-600", border: "border-red-400", icon: "bg-red-100 text-red-600" },
     blue: { bg: "bg-blue-500", text: "text-blue-500", border: "border-blue-200", icon: "bg-blue-100 text-blue-600" },
     green: { bg: "bg-green-500", text: "text-green-500", border: "border-green-200", icon: "bg-green-100 text-green-600" },
     purple: { bg: "bg-purple-500", text: "text-purple-500", border: "border-purple-200", icon: "bg-purple-100 text-purple-600" },
@@ -108,10 +141,19 @@ const getColorClasses = (color: string) => {
     yellow: { bg: "bg-yellow-500", text: "text-yellow-500", border: "border-yellow-200", icon: "bg-yellow-100 text-yellow-600" },
     platinum: { bg: "bg-gradient-to-r from-gray-400 to-gray-600", text: "text-gray-600", border: "border-gray-200", icon: "bg-gray-100 text-gray-600" },
   }
-  return colorMap[color] || colorMap.blue
+  return colorMap[color] || colorMap.red
 }
 
 export default function PackagesPreview() {
+  const [expandedFeatures, setExpandedFeatures] = useState<{ [key: string]: boolean }>({})
+
+  const toggleFeatures = (packageName: string) => {
+    setExpandedFeatures(prev => ({
+      ...prev,
+      [packageName]: !prev[packageName]
+    }))
+  }
+
   return (
     <section className="py-10 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
@@ -126,7 +168,7 @@ export default function PackagesPreview() {
             Professional publishing packages starting from ₹5,000. Complete support from manuscript to bestseller!
           </p>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
-            <Link href="/packages/comparison">
+            <Link href="/packages">
               <Button
                 size="lg"
                 className="w-full sm:w-auto bg-white text-red-600 hover:bg-red-50 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
@@ -135,14 +177,14 @@ export default function PackagesPreview() {
                 View Detailed Comparison
               </Button>
             </Link>
-            <Link href="/list-book-free">
+            <Link href="/publish-now">
               <Button
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-red-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-transparent backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
                 suppressHydrationWarning
               >
-                Start for FREE
+               Publish Now
               </Button>
             </Link>
           </div>
@@ -161,25 +203,27 @@ export default function PackagesPreview() {
             {packages.map((pkg) => {
               const IconComponent = pkg.icon
               const colors = getColorClasses(pkg.color)
+              const isExpanded = expandedFeatures[pkg.name] || false
+              
               return (
                 <Card
                   key={pkg.name}
-                  className={`relative border-2 transition-all duration-300 hover:shadow-2xl transform hover:scale-105 bg-white ${pkg.popular ? "ring-2 ring-orange-500 shadow-xl" : "shadow-lg"} ${pkg.featured ? "border-2 border-gray-300" : "border border-gray-200"}`}
+                  className={`relative border-2 transition-all duration-300 hover:shadow-2xl transform hover:scale-105 bg-white ${pkg.popular ? "ring-2 ring-red-500 shadow-xl" : "shadow-lg"} ${pkg.featured ? "border-2 border-red-300" : "border border-red-200"}`}
                 >
                   {/* Popular Badge */}
                   {pkg.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                      <Badge className="bg-orange-500 text-white px-4 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm font-bold shadow-lg">
-                        Most Popular
-                      </Badge>
+                                      <Badge className="bg-gradient-to-r from-red-600 to-black-800 text-white px-4 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm font-bold shadow-lg">
+                  Most Popular
+                </Badge>
                     </div>
                   )}
                   {/* Featured Badge */}
                   {pkg.featured && !pkg.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                      <Badge className="bg-purple-500 text-white px-4 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm font-bold shadow-lg">
-                        Featured
-                      </Badge>
+                                      <Badge className="bg-gradient-to-r from-red-600 to-black-800 text-white px-4 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm font-bold shadow-lg">
+                  Featured
+                </Badge>
                     </div>
                   )}
                   {/* Free Benefit Badge */}
@@ -234,9 +278,38 @@ export default function PackagesPreview() {
                           </span>
                         </li>
                       ))}
-                      {pkg.additionalFeatures > 0 && (
+                      
+                      {/* Additional Features Section */}
+                      {pkg.additionalFeatures && pkg.additionalFeatures.length > 0 && (
                         <li className="pt-2">
-                          <span className="text-xs text-blue-600 font-medium">+{pkg.additionalFeatures} more features</span>
+                          <button
+                            onClick={() => toggleFeatures(pkg.name)}
+                            className="flex items-center gap-1 text-xs text-red-600 font-medium hover:text-red-700 transition-colors cursor-pointer"
+                          >
+                            {isExpanded ? (
+                              <>
+                                <Minus className="h-3 w-3" />
+                                Hide {pkg.additionalFeatures.length} more features
+                              </>
+                            ) : (
+                              <>
+                                <Plus className="h-3 w-3" />
+                                +{pkg.additionalFeatures.length} more features
+                              </>
+                            )}
+                          </button>
+                          
+                          {/* Expanded Additional Features */}
+                          {isExpanded && (
+                            <div className="mt-3 pl-4 space-y-2 border-l-2 border-red-200">
+                              {pkg.additionalFeatures.map((feature, index) => (
+                                <div key={index} className="flex items-start">
+                                  <Check className="h-3 w-3 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                                  <span className="text-xs text-gray-600 leading-relaxed">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </li>
                       )}
                     </ul>
@@ -256,7 +329,7 @@ export default function PackagesPreview() {
                     </div>
                     <Button
                       asChild
-                      className={`w-full py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${pkg.popular ? "bg-orange-500 hover:bg-orange-600 text-white" : pkg.featured ? "bg-purple-500 hover:bg-purple-600 text-white" : `${colors.bg} hover:opacity-90 text-white`}`}
+                      className={`w-full py-2 sm:py-3 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${pkg.popular ? "bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white" : pkg.featured ? "bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white" : `${colors.bg} hover:opacity-90 text-white`}`}
                       suppressHydrationWarning
                     >
                       <Link href="/publishing-packages">

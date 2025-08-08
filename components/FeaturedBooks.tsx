@@ -109,14 +109,14 @@ export default function FeaturedBooks() {
                      className="w-full h-56 md:h-72 object-cover bg-gray-100 group-hover:scale-105 transition-transform duration-300"
                    />
                   <div className="absolute top-2 left-2">
-                    <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                    <span className="bg-gradient-to-r from-red-600 to-black-800 text-white px-2 py-1 rounded-full text-xs font-semibold">
                       {book.genre}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-4 bg-white">
-                  <h3 className="font-bold text-base md:text-lg text-black-800 mb-1 group-hover:text-red-600 transition-colors">
+                  <h3 className="font-bold text-base md:text-lg text-black-800 mb-1 group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-black-800 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                     {book.title}
                   </h3>
                   <p className="text-black-600 text-xs md:text-base mb-2 md:mb-3">by {book.author}</p>
@@ -125,7 +125,7 @@ export default function FeaturedBooks() {
                     <span className="text-lg md:text-2xl font-bold text-black-800">₹{book.price}</span>
                     <Button 
                       size="sm" 
-                      className="bg-red-600 hover:bg-red-700" 
+                      className="bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900" 
                       onClick={() => handleAddToCart(book)}
                       suppressHydrationWarning
                     >
@@ -159,14 +159,14 @@ export default function FeaturedBooks() {
                            className="w-full h-56 sm:h-72 object-cover bg-gray-100 group-hover:scale-105 transition-transform duration-300"
                          />
                         <div className="absolute top-2 left-2">
-                          <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
+                          <span className="bg-gradient-to-r from-red-600 to-black-800 text-white px-2 py-1 rounded-full text-xs font-semibold">
                             {book.genre}
                           </span>
                         </div>
                       </div>
 
                       <div className="p-3 sm:p-4 bg-white">
-                        <h3 className="font-bold text-base sm:text-lg text-black-800 mb-1 group-hover:text-red-600 transition-colors">
+                        <h3 className="font-bold text-base sm:text-lg text-black-800 mb-1 group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-black-800 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                           {book.title}
                         </h3>
                         <p className="text-black-600 text-xs sm:text-base mb-2 sm:mb-3">by {book.author}</p>
@@ -175,7 +175,7 @@ export default function FeaturedBooks() {
                           <span className="text-lg sm:text-2xl font-bold text-black-800">₹{book.price}</span>
                           <Button
                             size="sm"
-                            className="bg-red-600 hover:bg-red-700"
+                            className="bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900"
                             onClick={() => handleAddToCart(book)}
                             suppressHydrationWarning
                           >
@@ -213,7 +213,7 @@ export default function FeaturedBooks() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex ? "bg-red-600" : "bg-gray-300"}`}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${index === currentIndex ? "bg-gradient-to-r from-red-600 to-black-800" : "bg-gray-300"}`}
                 suppressHydrationWarning
               />
             ))}
@@ -225,7 +225,7 @@ export default function FeaturedBooks() {
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-red-600 text-red-600 hover:bg-red-600 hover:text-white bg-white"
+              className="w-full sm:w-auto border-red-600 text-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-black-800 hover:text-white bg-white"
               suppressHydrationWarning
             >
               View All Books

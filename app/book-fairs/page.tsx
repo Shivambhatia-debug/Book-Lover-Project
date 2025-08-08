@@ -31,7 +31,7 @@ const upcomingFairs = [
   },
   {
     id: 2,
-    name: "Coimbatore Book Fare Festival",
+    name: "Delhi Book Fare Festival",
     date: "Upcoming",
     location: "Upcoming",
     address: "Upcoming",

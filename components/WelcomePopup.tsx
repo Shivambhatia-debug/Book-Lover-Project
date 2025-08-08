@@ -61,7 +61,7 @@ export default function WelcomePopup() {
             <div className="space-y-2 sm:space-y-3">
               <Button
                 onClick={() => setIsOpen(false)}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 sm:py-3"
+                className="w-full bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white font-semibold py-2 sm:py-3"
               >
                 🚀 Start Your Publishing Journey
               </Button>

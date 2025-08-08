@@ -295,7 +295,7 @@ export default function PaymentGateway({ isOpen, onClose, selectedPackage, onSuc
         </div>
       )}
 
-      <Button onClick={handlePayment} className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg font-semibold">
+      <Button onClick={handlePayment} className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg font-semibold" suppressHydrationWarning>
         Pay {selectedPackage.price}
       </Button>
     </div>
@@ -331,7 +331,7 @@ export default function PaymentGateway({ isOpen, onClose, selectedPackage, onSuc
               <CardTitle className="text-xl font-bold">Complete Your Purchase</CardTitle>
               <p className="text-sm text-gray-600 mt-1">{selectedPackage.name}</p>
             </div>
-            <Button variant="ghost" size="sm" onClick={onClose}>
+            <Button variant="ghost" size="sm" onClick={onClose} suppressHydrationWarning>
               <X className="h-4 w-4" />
             </Button>
           </div>

@@ -102,7 +102,7 @@ export default function Hero() {
                 <Link href="/books">
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-black-800 hover:from-red-700 hover:to-black-900 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     Browse Books
                   </Button>
@@ -119,7 +119,7 @@ export default function Hero() {
               </div>
 
               {/* Publishing CTA */}
-              <div className="bg-gradient-to-r from-red-600/90 to-red-700/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-red-400/30 shadow-xl">
+              <div className="bg-gradient-to-r from-red-600/90 to-black-800/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-red-400/30 shadow-xl">
                 <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-3">
                   📚 Publish your book with the Best Experts
                 </h3>
@@ -150,7 +150,7 @@ export default function Hero() {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-red-500 shadow-lg scale-110" : "bg-white/60 hover:bg-white/80"
+              index === currentSlide ? "bg-gradient-to-r from-red-600 to-black-800 shadow-lg scale-110" : "bg-white/60 hover:bg-white/80"
             }`}
           />
         ))}
